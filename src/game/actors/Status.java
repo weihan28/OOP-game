@@ -8,5 +8,6 @@ package game.actors;
  */
 public enum Status {
     HOSTILE_TO_ENEMY,
-    HOSTILE_TO_PLAYER
+    HOSTILE_TO_PLAYER,
+    CAN_ACTOR_ENTER
 }
