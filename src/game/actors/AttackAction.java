@@ -1,4 +1,4 @@
-package game;
+package game.actors;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
@@ -7,6 +7,9 @@ import edu.monash.fit2099.engine.weapons.Weapon;
 
 import java.util.Random;
 
+/**
+ * An action class for an actor to attack another actor
+ */
 public class AttackAction extends Action {
 
     /**
@@ -52,6 +55,16 @@ public class AttackAction extends Action {
         this.direction = direction;
     }
 
+    /**
+     * Allow the Actor to attack.
+     *
+     * Overrides Action.execute()
+     *
+     * @see Action#execute(Actor, GameMap)
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return a description of the Action suitable for the menu
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
         if (weapon == null) {
@@ -72,6 +85,12 @@ public class AttackAction extends Action {
         return result;
     }
 
+    /**
+     * Returns a description of this attack suitable to display in the menu.
+     *
+     * @param actor The actor performing the action.
+     * @return a String, e.g. "Intern (4/4) punches Huntsman Spider (1/1) for 5 damage."
+     */
     @Override
     public String menuDescription(Actor actor) {
         return actor + " attacks " + target + " at " + direction + " with " + (weapon != null ? weapon : "Intrinsic Weapon");

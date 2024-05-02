@@ -1,23 +1,25 @@
-package game;
+package game.behaviours;
+
+import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.actors.Behaviour;
+import edu.monash.fit2099.engine.positions.Exit;
+import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import edu.monash.fit2099.engine.actions.Action;
-import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.positions.Exit;
-import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.positions.Location;
-import edu.monash.fit2099.engine.actors.Behaviour;
-
 /**
+ * Class representing the wandering behaviour of actors. Used by monsters.
+ *
  * Created by:
  * @author Riordan D. Alfredo
  * Modified by:
+ * @author chinweihan
  *
  */
 public class WanderBehaviour implements Behaviour {
-
     private final Random random = new Random();
 
     /**

@@ -1,4 +1,4 @@
-package game;
+package game.actors;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -7,16 +7,25 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.behaviours.AttackBehaviour;
+import game.behaviours.WanderBehaviour;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
+/**
+ * A class representing the HuntsmanSpider monster.
+ */
 public class HuntsmanSpider extends Actor {
-    private Map<Integer, Behaviour> behaviours = new HashMap<>();
+    private Map<Integer, Behaviour> behaviours = new TreeMap<>();
 
     public HuntsmanSpider() {
         super("Huntsman Spider", '8', 1);
-        this.behaviours.put(999, new WanderBehaviour());
+        this.addCapability(Status.HOSTILE_TO_PLAYER);
+        // lower number keyed behaviours are prioritised first
+        this.behaviours.put(10, new AttackBehaviour());
+        this.behaviours.put(20, new WanderBehaviour());
     }
 
     /**
@@ -53,6 +62,19 @@ public class HuntsmanSpider extends Actor {
             actions.add(new AttackAction(this, direction));
         }
         return actions;
+    }
+
+    /**
+     * Creates and returns an intrinsic weapon.
+     * Override this method to create an intrinsic weapon for
+     * the current Actor with more interesting descriptions and/or different damage.
+     *
+     * @see Actor#getIntrinsicWeapon()
+     * @return a freshly-instantiated IntrinsicWeapon
+     */
+    @Override
+    public IntrinsicWeapon getIntrinsicWeapon() {
+        return new IntrinsicWeapon(1, "bites", 25);
     }
 
 }

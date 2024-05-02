@@ -1,4 +1,4 @@
-package game;
+package game.displays;
 
 /**
  * Fancy messages used to print the game title
@@ -7,6 +7,7 @@ package game;
  * Created by:
  * @author Adrian Kristanto
  * Modified by:
+ * @author chinweihan
  */
 public class FancyMessage {
     public static String TITLE =
