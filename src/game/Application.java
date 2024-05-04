@@ -8,10 +8,7 @@ import game.actors.HuntsmanSpider;
 import game.actors.Player;
 import game.displays.FancyMessage;
 import game.grounds.*;
-import game.items.scraps.JarOfPickles;
-import game.items.scraps.LargeBolt;
-import game.items.scraps.MetalPipe;
-import game.items.scraps.MetalSheet;
+import game.items.scraps.*;
 import game.trees.SaplingInheritree;
 
 import java.util.Arrays;
@@ -82,6 +79,7 @@ public class Application {
         gameMap.at(2,1).addItem(new MetalSheet());
         gameMap.at(15,8).addItem(new MetalPipe());
         gameMap.at(16,8).addItem(new JarOfPickles());
+        gameMap.at(17,8).addItem(new PotOfGold());
 
         gameMap.at(15, 10).addActor(new HuntsmanSpider());
         gameMap.at(7, 9).addActor(new HuntsmanSpider());
