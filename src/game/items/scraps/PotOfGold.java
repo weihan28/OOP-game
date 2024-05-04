@@ -15,9 +15,9 @@ public class PotOfGold extends Item implements Consumable {
 
     @Override
     public String consumedBy(Actor actor) {
-       actor.removeItemFromInventory(this);
-       actor.addBalance(addBalanceAmount);
-    return String.format("gains %d credits. The rest are held as tax by the factory", addBalanceAmount);
+        actor.removeItemFromInventory(this);
+        actor.addBalance(addBalanceAmount);
+        return String.format("gains %d credits. The rest are held as tax by the factory", addBalanceAmount);
     }
 
     @Override
