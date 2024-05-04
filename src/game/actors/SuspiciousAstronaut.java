@@ -1,10 +1,8 @@
 package game.actors;
 
-import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.behaviours.KillBehaviour;
+import game.behaviours.AttackBehaviour;
 import game.behaviours.WanderBehaviour;
 
 public class SuspiciousAstronaut extends Monster{
@@ -15,9 +13,8 @@ public class SuspiciousAstronaut extends Monster{
     public SuspiciousAstronaut() {
         super("Suspicious Astronaut", 'ඞ', 99);
         this.addCapability(Status.HOSTILE_TO_PLAYER);
-        // lower number keyed behaviours are prioritised first
-        this.behaviours.put(10, new KillBehaviour());
-        this.behaviours.put(20, new WanderBehaviour());
+        this.behaviours.put(20, new AttackBehaviour());
+        this.behaviours.put(30, new WanderBehaviour());
     }
 
     /**
@@ -30,6 +27,6 @@ public class SuspiciousAstronaut extends Monster{
      */
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
-        return new IntrinsicWeapon(1, "stabs", 100);
+        return new IntrinsicWeapon(2147483647, "bonks", 100);
     }
 }

@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.actions.MoveActorAction;
 import edu.monash.fit2099.engine.actors.Behaviour;
+import game.actors.Status;
 
 /**
  * A class that figures out a MoveAction that will move the actor one step
@@ -19,23 +20,40 @@ import edu.monash.fit2099.engine.actors.Behaviour;
  *
  */
 public class FollowBehaviour implements Behaviour {
+    private Status statusToFollow;
+    private Actor target;
 
-    private final Actor target;
+    public FollowBehaviour(Status statusToFollow) {
+        this.statusToFollow = statusToFollow;
+        this.target = null;
+    }
 
-    /**
-     * Constructor.
-     *
-     * @param subject the Actor to follow
-     */
-    public FollowBehaviour(Actor subject) {
-        this.target = subject;
+    public void setTarget(Actor actor) {
+        this.target = actor;
     }
 
     @Override
     public Action getAction(Actor actor, GameMap map) {
-        if(!map.contains(target) || !map.contains(actor))
+        if (target==null || !map.contains(target) || !map.contains(actor))
             return null;
 
+        boolean newTargetInRange = updateNewTarget(actor, map);
+        if (!newTargetInRange){
+            Action action = getFollowDirection(actor, target, map);
+            return action;
+        }
+        return null;
+    }
+
+    /**
+     * Gets the next MoveActorAction to follow the target.
+     * Returns null if there are no valid directions that move the actor closer to the target.
+     * @param actor
+     * @param target
+     * @param map
+     * @return MoveActorAction the action to follow the target.
+     */
+    private Action getFollowDirection(Actor actor, Actor target, GameMap map) {
         Location here = map.locationOf(actor);
         Location there = map.locationOf(target);
 
@@ -49,8 +67,27 @@ public class FollowBehaviour implements Behaviour {
                 }
             }
         }
-
         return null;
+    }
+
+    /**
+     * Updates the target if another actor is within the range.
+     * @param actor
+     * @param map
+     * @return Updates the target and returns true if another valid target is nearby.
+     */
+    private boolean updateNewTarget(Actor actor, GameMap map) {
+        for (Exit exit : map.locationOf(actor).getExits()) {
+            Location destination = exit.getDestination();
+            if (destination.containsAnActor()){
+                Actor target = destination.getActor();
+                if (target.hasCapability(statusToFollow)){
+                    this.target = target;
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
