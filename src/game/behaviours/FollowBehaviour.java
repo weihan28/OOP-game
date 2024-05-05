@@ -16,8 +16,8 @@ import game.actors.Status;
  *
  * Created by: Riordan D. Alfredo
  * @author Riordan D. Alfredo
- * Modified by: Anthony Lew
- *
+ * Modified by:
+ * @author chinweihan
  */
 public class FollowBehaviour implements Behaviour {
     private Status statusToFollow;
