@@ -1,5 +1,6 @@
 package game.behaviours;
 
+import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.positions.Exit;
@@ -47,7 +48,7 @@ public class FollowBehaviour implements Behaviour {
 
     /**
      * Gets the next MoveActorAction to follow the target.
-     * Returns null if there are no valid directions that move the actor closer to the target.
+     * Returns doNothingAction if there are no valid directions that move the actor closer to the target.
      * @param actor
      * @param target
      * @param map
@@ -67,7 +68,7 @@ public class FollowBehaviour implements Behaviour {
                 }
             }
         }
-        return null;
+        return new DoNothingAction();
     }
 
     /**
