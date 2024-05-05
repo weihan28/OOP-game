@@ -81,7 +81,8 @@ public class Player extends Actor {
         int maxHealth = this.getAttributeMaximum(BaseActorAttributes.HEALTH);
         String res = "";
         res += name + "\n";
-        res += String.format("HP: %d/%d",currHealth,maxHealth);
+        res += String.format("HP: %d/%d",currHealth,maxHealth) + "\n";
+        res += String.format("Balance: %d", getBalance());
         return res;
     }
 
