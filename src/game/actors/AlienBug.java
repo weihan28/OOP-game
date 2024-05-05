@@ -16,7 +16,6 @@ import java.util.TreeMap;
  * A class representing the HuntsmanSpider monster.
  */
 public class AlienBug extends Monster {
-    protected Map<Integer, Behaviour> behaviours = new TreeMap<>();
     private final static Random random = new Random();
     private final static String namePrefix = "Feature-";
 
@@ -47,7 +46,8 @@ public class AlienBug extends Monster {
     public String unconscious(Actor actor, GameMap map) {
         // move this to monster class so that all monsters can drop items?
         for (Item item : this.getItemInventory())
-            item.getDropAction(actor).execute(actor, map);
+            item.getDropAction(this).execute(this, map);
+
         map.removeActor(this);
         return this + " met their demise at the hand of " + actor;
     }
