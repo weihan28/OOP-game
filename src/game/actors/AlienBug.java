@@ -8,6 +8,7 @@ import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
 import game.behaviours.PickUpBehaviour;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
@@ -45,10 +46,12 @@ public class AlienBug extends Monster {
     @Override
     public String unconscious(Actor actor, GameMap map) {
         // move this to monster class so that all monsters can drop items?
-        for (Item item : this.getItemInventory())
+        List<Item> items = List.copyOf(getItemInventory());
+        for (Item item : items) {
             item.getDropAction(this).execute(this, map);
+        }
 
         map.removeActor(this);
-        return this + " met their demise at the hand of " + actor;
+        return this + " met their demise at the hand of " + actor + "dropped" + items;
     }
 }
