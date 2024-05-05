@@ -6,10 +6,11 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.behaviours.AttackBehaviour;
-import game.behaviours.WanderBehaviour;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -52,6 +53,34 @@ public abstract class Monster extends Actor{
             actions.add(new AttackAction(this, direction));
         }
         return actions;
+    }
+
+    /**
+     * Method that can be executed when the Monster is unconscious due to the action of another actor. Also drops all items from inventory.
+     * @param actor the perpetrator
+     * @param map where the actor fell unconscious
+     * @return a string describing what happened when the actor is unconscious
+     */
+    @Override
+    public String unconscious(Actor actor, GameMap map) {
+        String dropRes = dropAllItems(map);
+        String unconsciousRes = super.unconscious(actor, map);
+        return String.format("%s\n%s", unconsciousRes, dropRes);
+    }
+
+    /**
+     * Drops all the inventory items of this monster when called.
+     * Prerequisite: this monster still exists on the map.
+     * @param map the game map that the monster is in.
+     * @return String menu description of the dropped items.
+     */
+    private String dropAllItems(GameMap map) {
+        ArrayList<String> droppedRes = new ArrayList<>();
+        List<Item> items = List.copyOf(getItemInventory());
+        for (Item item : items) {
+            droppedRes.add(item.getDropAction(this).execute(this, map));
+        }
+        return String.join("\n", droppedRes);
     }
 
 }

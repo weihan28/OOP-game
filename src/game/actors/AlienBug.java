@@ -36,22 +36,4 @@ public class AlienBug extends Monster {
         }
         return digits;
     }
-
-    /**
-     * Method that can be executed when the alien bug is unconscious due to the action of another actor. Also drops all items from inventory.
-     * @param actor the perpetrator
-     * @param map where the actor fell unconscious
-     * @return a string describing what happened when the actor is unconscious
-     */
-    @Override
-    public String unconscious(Actor actor, GameMap map) {
-        // move this to monster class so that all monsters can drop items?
-        List<Item> items = List.copyOf(getItemInventory());
-        for (Item item : items) {
-            item.getDropAction(this).execute(this, map);
-        }
-
-        map.removeActor(this);
-        return this + " met their demise at the hand of " + actor + "dropped" + items;
-    }
 }
