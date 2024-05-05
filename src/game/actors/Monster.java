@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.behaviours.WanderBehaviour;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ public abstract class Monster extends Actor{
 
     public Monster(String name, char displayChar, int hitpoints) {
        super(name, displayChar, hitpoints);
+        this.behaviours.put(50, new WanderBehaviour());
     }
     /**
      * At each turn, select a valid action to perform.

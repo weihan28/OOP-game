@@ -24,7 +24,6 @@ public class AlienBug extends Monster {
         super(generateName(), 'a', 2);
         this.behaviours.put(10, new PickUpBehaviour());
         this.behaviours.put(20, new FollowBehaviour(Status.FOLLOWABLE_BY_ALIEN));
-        this.behaviours.put(30, new WanderBehaviour());
         // assumption: alien bug can enter spaceship, should capability be added specifically for alien bug?
         this.addCapability(Status.CAN_ACTOR_ENTER);
     }

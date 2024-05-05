@@ -24,7 +24,6 @@ public class HuntsmanSpider extends Monster {
         this.addCapability(Status.HOSTILE_TO_PLAYER);
         // lower number keyed behaviours are prioritised first
         this.behaviours.put(10, new AttackBehaviour());
-        this.behaviours.put(20, new WanderBehaviour());
     }
 
 

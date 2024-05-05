@@ -13,8 +13,7 @@ public class SuspiciousAstronaut extends Monster{
     public SuspiciousAstronaut() {
         super("Suspicious Astronaut", 'ඞ', 99);
         this.addCapability(Status.HOSTILE_TO_PLAYER);
-        this.behaviours.put(20, new AttackBehaviour());
-        this.behaviours.put(30, new WanderBehaviour());
+        this.behaviours.put(10, new AttackBehaviour());
     }
 
     /**
