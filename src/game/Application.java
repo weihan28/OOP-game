@@ -75,7 +75,7 @@ public class Application {
      */
     private static void initialiseOtherEntities(GameMap gameMap){
         //gameMap.at(1,1).addItem(new LargeBolt());
-        //gameMap.at(15,11).addItem(new MetalSheet());
+        gameMap.at(15,11).addItem(new MetalSheet());
         //gameMap.at(15,8).addItem(new MetalPipe());
 
         //gameMap.at(15, 10).addActor(new HuntsmanSpider());
