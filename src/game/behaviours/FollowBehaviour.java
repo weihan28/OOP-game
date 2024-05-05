@@ -34,10 +34,10 @@ public class FollowBehaviour implements Behaviour {
 
     @Override
     public Action getAction(Actor actor, GameMap map) {
+        boolean newTargetInRange = updateNewTarget(actor, map);
         if (target==null || !map.contains(target) || !map.contains(actor))
             return null;
 
-        boolean newTargetInRange = updateNewTarget(actor, map);
         if (!newTargetInRange){
             Action action = getFollowDirection(actor, target, map);
             return action;
