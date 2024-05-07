@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 
 public class EnergyDrink extends Item implements Consumable{
+    protected final int credits = 10;
     private final int healAmount = 1;
     /***
      * Constructor.

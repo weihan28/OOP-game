@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actors.AttackAction;
 
 public class DragonSlayerSwordReplica extends WeaponItem {
+    protected final int credits = 100;
     /**
      * Constructor.
      *
