@@ -13,7 +13,7 @@ public class EnergyDrink extends Item implements Consumable{
      * @param portable true if and only if the Item can be picked up
      */
     public EnergyDrink(String name, char displayChar, boolean portable) {
-        super(name, displayChar, portable);
+        super("Energy Drink", '*', true);
     }
 
     @Override
