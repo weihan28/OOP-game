@@ -15,11 +15,19 @@ import game.items.fruits.ConsumeAction;
 public class Puddle extends Ground implements Consumable {
     private final int addMaxHealthAmount;
 
+    /**
+     * Constructor method for Puddle. It is a subclass of Ground and implements Consumable.
+     */
     public Puddle() {
         super('~');
         this.addMaxHealthAmount = 1;
     }
 
+    /**
+     * Consumes the Item and adds the health to the Actor's health.
+     * @param actor The actor that will consume the Item.
+     * @return
+     */
     @Override
     public String consumedBy(Actor actor) {
         actor.modifyAttributeMaximum(BaseActorAttributes.HEALTH, ActorAttributeOperations.INCREASE, addMaxHealthAmount);

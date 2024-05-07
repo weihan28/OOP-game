@@ -14,6 +14,11 @@ public class JarOfPickles extends Item implements Consumable {
     private final int healAmount;
     private final int damageAmount;
 
+    /**
+     * Constructor method for JarOfPickles. It is a subclass of Item and implements Consumable.
+     * It is a special item that has a 50% chance of expiring when consumed.
+     * It heals the Actor by 1 health if it is not expired, otherwise it damages the Actor by 1 health.
+     */
     public JarOfPickles() {
         super("Jar of Pickles", 'n', true);
         this.expireChance = 50;
@@ -21,10 +26,19 @@ public class JarOfPickles extends Item implements Consumable {
         this.damageAmount = 1;
     }
 
+    /**
+     * Returns true if the JarOfPickles is expired, false otherwise.
+     * @return
+     */
     private boolean isExpired(){
         return rand.nextInt(100) <= expireChance;
     }
 
+    /**
+     * Consumes the Item and heals the Actor if it is not expired, otherwise it damages the Actor.
+     * @param actor The actor that will consume the Item.
+     * @return
+     */
     @Override
     public String consumedBy(Actor actor) {
         actor.removeItemFromInventory(this);
