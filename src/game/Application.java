@@ -4,14 +4,11 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
-import game.actors.HuntsmanSpider;
-import game.actors.Player;
+
 import game.displays.FancyMessage;
+import game.actors.*;
 import game.grounds.*;
-import game.items.scraps.LargeBolt;
-import game.items.scraps.MetalPipe;
-import game.items.scraps.MetalSheet;
-import game.trees.SaplingInheritree;
+import game.items.scraps.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -77,16 +74,17 @@ public class Application {
      * @param gameMap the map of the game containing the player.
      */
     private static void initialiseOtherEntities(GameMap gameMap){
-        gameMap.at(1,1).addItem(new LargeBolt());
-        gameMap.at(2,1).addItem(new MetalSheet());
-        gameMap.at(15,8).addItem(new MetalPipe());
+        gameMap.at(15,8).addItem(new LargeBolt());
+        gameMap.at(15,8).addItem(new MetalSheet());
+        //gameMap.at(15,11).addItem(new MetalPipe());
 
-        gameMap.at(15, 10).addActor(new HuntsmanSpider());
-        gameMap.at(7, 9).addActor(new HuntsmanSpider());
+        //gameMap.at(15, 10).addActor(new HuntsmanSpider());
+        //gameMap.at(7, 9).addActor(new HuntsmanSpider());
+        gameMap.at(15,8).addActor(new AlienBug());
 
-        gameMap.at(3, 1).setGround(new SaplingInheritree());
+        //gameMap.at(3, 1).setGround(new SaplingInheritree());
 
-        gameMap.at(20, 1).setGround(new Crater());
-        gameMap.at(20, 10).setGround(new Crater());
+        //gameMap.at(20, 1).setGround(new Crater());
+        //gameMap.at(20, 10).setGround(new Crater());
     }
 }
