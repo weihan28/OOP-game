@@ -4,9 +4,9 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
-import game.actors.HuntsmanSpider;
-import game.actors.Player;
+
 import game.displays.FancyMessage;
+import game.actors.*;
 import game.grounds.*;
 import game.items.scraps.*;
 import game.trees.SaplingInheritree;
@@ -81,12 +81,13 @@ public class Application {
         gameMap.at(16,8).addItem(new JarOfPickles());
         gameMap.at(17,8).addItem(new PotOfGold());
 
-        gameMap.at(15, 10).addActor(new HuntsmanSpider());
-        gameMap.at(7, 9).addActor(new HuntsmanSpider());
+        //gameMap.at(15, 10).addActor(new HuntsmanSpider());
+        //gameMap.at(7, 9).addActor(new HuntsmanSpider());
+        gameMap.at(15,8).addActor(new AlienBug());
 
-        gameMap.at(3, 1).setGround(new SaplingInheritree());
+        //gameMap.at(3, 1).setGround(new SaplingInheritree());
 
-        gameMap.at(20, 1).setGround(new Crater());
-        gameMap.at(20, 10).setGround(new Crater());
+        //gameMap.at(20, 1).setGround(new Crater());
+        //gameMap.at(20, 10).setGround(new Crater());
     }
 }
