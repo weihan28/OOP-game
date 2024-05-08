@@ -7,8 +7,13 @@ import edu.monash.fit2099.engine.positions.World;
 
 import game.displays.FancyMessage;
 import game.actors.*;
+import game.factories.ActorFactory;
+import game.factories.AlienBugFactory;
+import game.factories.HuntsmanSpiderFactory;
+import game.factories.SuspiciousAstronautFactory;
 import game.grounds.*;
 import game.items.scraps.*;
+import game.spawners.ActorSpawner;
 import game.trees.SaplingInheritree;
 
 import java.util.Arrays;
@@ -75,19 +80,28 @@ public class Application {
      * @param gameMap the map of the game containing the player.
      */
     private static void initialiseOtherEntities(GameMap gameMap){
+        setItems(gameMap);
+        setCraters(gameMap);
+        //gameMap.at(15, 10).addActor(new HuntsmanSpider());
+        //gameMap.at(7, 9).addActor(new HuntsmanSpider());
+//        gameMap.at(15,9).addActor(new AlienBug());
+
+        //gameMap.at(3, 1).setGround(new SaplingInheritree());
+    }
+
+    private static void setItems(GameMap gameMap){
         gameMap.at(1,1).addItem(new LargeBolt());
         gameMap.at(2,1).addItem(new MetalSheet());
         gameMap.at(15,8).addItem(new MetalPipe());
         gameMap.at(16,8).addItem(new JarOfPickles());
         gameMap.at(17,8).addItem(new PotOfGold());
+    }
 
-        //gameMap.at(15, 10).addActor(new HuntsmanSpider());
-        //gameMap.at(7, 9).addActor(new HuntsmanSpider());
-        gameMap.at(15,8).addActor(new AlienBug());
-
-        //gameMap.at(3, 1).setGround(new SaplingInheritree());
-
-        //gameMap.at(20, 1).setGround(new Crater());
-        //gameMap.at(20, 10).setGround(new Crater());
+    private static void setCraters(GameMap gameMap){
+        // sets 2 craters that spawn different monsters at different spawn chances.
+        ActorSpawner AlienBugSpawner = new ActorSpawner(new AlienBugFactory(), 10);
+        ActorSpawner SuspiciousAstronautSpawner = new ActorSpawner(new SuspiciousAstronautFactory(), 5);
+        gameMap.at(20, 1).setGround(new Crater(AlienBugSpawner));
+        gameMap.at(20, 10).setGround(new Crater(SuspiciousAstronautSpawner));
     }
 }
