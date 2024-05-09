@@ -27,7 +27,7 @@ public class ConsumeAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         String description = consumable.consumedBy(actor);
-        return String.format("%s consumed %s and %s", actor, consumable, description);
+        return String.format("%s consumed %s and %s.", actor, consumable, description);
     }
 
     /**

@@ -26,6 +26,7 @@ public class Player extends Actor {
      */
     public Player(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
+        this.addCapability(Status.FOLLOWABLE_BY_ALIEN);
         this.addCapability(Status.HOSTILE_TO_ENEMY);
         this.addCapability(Status.CAN_ACTOR_ENTER);
     }
@@ -81,7 +82,8 @@ public class Player extends Actor {
         int maxHealth = this.getAttributeMaximum(BaseActorAttributes.HEALTH);
         String res = "";
         res += name + "\n";
-        res += String.format("HP: %d/%d",currHealth,maxHealth);
+        res += String.format("HP: %d/%d",currHealth,maxHealth) + "\n";
+        res += String.format("Balance: %d", getBalance());
         return res;
     }
 
