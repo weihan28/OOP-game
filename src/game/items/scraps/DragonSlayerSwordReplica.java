@@ -26,6 +26,7 @@ public class DragonSlayerSwordReplica extends WeaponItem implements Purchasable 
         if (actor.getBalance()<cost) {
             return String.format("Insufficient credits to purchase ");
         }
+        actor.deductBalance(purchaseCost);
         if (random.nextInt(100) <= purchaseChance) {
             actor.addItemToInventory(this);
             return String.format("%s successfully purchased %s for %d credits", actor, this, purchaseCost);

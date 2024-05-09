@@ -28,7 +28,7 @@ public class ToiletPaperRoll extends Item implements Purchasable{
         if (actor.getBalance()<cost) {
             return String.format("Insufficient credits to purchase ");
         }
-        actor.deductBalance(cost);
+        actor.deductBalance(purchaseCost);
         actor.addItemToInventory(this);
         return String.format("%s successfully purchased %s for %d credits", actor, this, purchaseCost);
     }
