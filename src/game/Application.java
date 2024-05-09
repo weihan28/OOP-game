@@ -75,19 +75,17 @@ public class Application {
      * @param gameMap the map of the game containing the player.
      */
     private static void initialiseOtherEntities(GameMap gameMap){
+        gameMap.at(15,5).setGround(new Terminal());
+        gameMap.at(3, 1).setGround(new SaplingInheritree());
+        gameMap.at(20, 10).setGround(new Crater());
+
         gameMap.at(1,1).addItem(new LargeBolt());
         gameMap.at(2,1).addItem(new MetalSheet());
         gameMap.at(15,8).addItem(new MetalPipe());
         gameMap.at(16,8).addItem(new JarOfPickles());
         gameMap.at(17,8).addItem(new PotOfGold());
 
-        //gameMap.at(15, 10).addActor(new HuntsmanSpider());
-        //gameMap.at(7, 9).addActor(new HuntsmanSpider());
-        gameMap.at(15,8).addActor(new AlienBug());
-
-        //gameMap.at(3, 1).setGround(new SaplingInheritree());
-
-        //gameMap.at(20, 1).setGround(new Crater());
-        //gameMap.at(20, 10).setGround(new Crater());
+        gameMap.at(7, 9).addActor(new HuntsmanSpider());
+        gameMap.at(15,10).addActor(new AlienBug());
     }
 }

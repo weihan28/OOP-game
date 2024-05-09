@@ -8,16 +8,14 @@ import game.factories.DragonSlayerSwordReplicaFactory;
 import game.factories.EnergyDrinkFactory;
 import game.factories.PurchasableFactory;
 import game.factories.ToiletPaperRollFactory;
-import game.items.fruits.EnergyDrink;
-import game.items.scraps.DragonSlayerSwordReplica;
 import game.items.scraps.PurchaseAction;
 
 import java.util.ArrayList;
 
-public class ComputerSystem extends Ground {
+public class Terminal extends Ground {
     private ArrayList<PurchasableFactory> purchasableFactories = new ArrayList<>();
 
-    public ComputerSystem() {
+    public Terminal() {
         super('=');
         this.purchasableFactories.add(new EnergyDrinkFactory());
         this.purchasableFactories.add(new DragonSlayerSwordReplicaFactory());
