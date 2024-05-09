@@ -12,7 +12,8 @@ import game.actors.Status;
 /**
  * A class that figures out a MoveAction that will move the actor one step
  * closer to a target Actor.
- * @see edu.monash.fit2099.demo.mars.Application
+ * Taken from the mars module and slightly modified.
+ * @see edu.monash.fit2099.demo.mars.behaviours.FollowBehaviour
  *
  * Created by: Riordan D. Alfredo
  * @author Riordan D. Alfredo
@@ -23,6 +24,10 @@ public class FollowBehaviour implements Behaviour {
     private Status statusToFollow;
     private Actor target;
 
+    /**
+     * Constructor for creating a FollowBehaviour instance.
+     * @param statusToFollow the status that all targets possess.
+     */
     public FollowBehaviour(Status statusToFollow) {
         this.statusToFollow = statusToFollow;
         this.target = null;
@@ -32,6 +37,12 @@ public class FollowBehaviour implements Behaviour {
         this.target = actor;
     }
 
+    /**
+     * Get the action fot the given actor to do.
+     * @param actor the Actor acting
+     * @param map the GameMap containing the Actor
+     * @return A direction to follow if there is a target to follow, else null.
+     */
     @Override
     public Action getAction(Actor actor, GameMap map) {
         boolean newTargetInRange = updateNewTarget(actor, map);

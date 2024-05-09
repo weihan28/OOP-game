@@ -4,7 +4,9 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 
 import java.util.Random;
-
+/**
+ * A class that represents a Toilet Paper Roll in the game.
+ */
 public class ToiletPaperRoll extends Item implements Purchasable{
     private final Random random = new Random();
     private final int cost = 5;
@@ -15,6 +17,11 @@ public class ToiletPaperRoll extends Item implements Purchasable{
         super("ToiletPaperRoll", 's', true);
     }
 
+    /**
+     * Called when an actor is purchasing the item.
+     * @param actor The actor that is purchasing the object.
+     * @return the result string of the purchase.
+     */
     @Override
     public String purchaseBy(Actor actor) { // This should handle the computer systems purchase logic
         int purchaseCost = getCost();

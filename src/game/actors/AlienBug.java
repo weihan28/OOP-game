@@ -1,20 +1,11 @@
 package game.actors;
 
-import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.actors.Behaviour;
-import edu.monash.fit2099.engine.items.Item;
-import edu.monash.fit2099.engine.positions.GameMap;
 import game.behaviours.FollowBehaviour;
-import game.behaviours.WanderBehaviour;
 import game.behaviours.PickUpBehaviour;
-
-import java.util.List;
-import java.util.Map;
 import java.util.Random;
-import java.util.TreeMap;
 
 /**
- * A class representing the HuntsmanSpider monster.
+ * A class representing the AlienBug monster.
  */
 public class AlienBug extends Monster {
     private final static Random random = new Random();
@@ -24,8 +15,7 @@ public class AlienBug extends Monster {
         super(generateName(), 'a', 2);
         this.behaviours.put(10, new PickUpBehaviour());
         this.behaviours.put(20, new FollowBehaviour(Status.FOLLOWABLE_BY_ALIEN));
-        // assumption: alien bug can enter spaceship, should capability be added specifically for alien bug?
-        this.addCapability(Status.CAN_ACTOR_ENTER);
+        this.addCapability(Status.CAN_ENTER_FLOOR);
     }
 
     private static String generateName() {

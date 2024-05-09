@@ -34,6 +34,13 @@ public class Puddle extends Ground implements Consumable {
         return String.format("%s feels invigorated", actor);
     }
 
+    /**
+     * Gets the allowed action for puddle. ie: the consume action for drinking a puddle.
+     * @param actor the Actor acting
+     * @param location the current Location
+     * @param direction the direction of the Ground from the Actor
+     * @return
+     */
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = super.allowableActions(actor, location, direction);

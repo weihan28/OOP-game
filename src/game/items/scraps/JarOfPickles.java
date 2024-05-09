@@ -8,6 +8,9 @@ import game.items.fruits.ConsumeAction;
 
 import java.util.Random;
 
+/**
+ * A class that represents a Jar of Pickles in the game.
+ **/
 public class JarOfPickles extends Item implements Consumable {
     private final Random rand = new Random();
     private final int expireChance;

@@ -8,14 +8,14 @@ import game.actors.AttackAction;
 
 import java.util.Random;
 
+/**
+ * A class that represents a Dragon Slayer Sword in the game.
+ */
 public class DragonSlayerSwordReplica extends WeaponItem implements Purchasable {
     private final Random random = new Random();
     private final int cost = 100;
     private final int purchaseChance = 50;
-    /**
-     * Constructor.
-     *
-     */
+
     public DragonSlayerSwordReplica() {
         super("DragonSlayerSwordReplica", 'x', 50, "slashes", 75);
     }

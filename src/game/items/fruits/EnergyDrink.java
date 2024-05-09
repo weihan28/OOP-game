@@ -5,6 +5,9 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import game.items.scraps.Purchasable;
 
+/**
+ * A class that represents a Energy Drink in the game.
+ */
 public class EnergyDrink extends Item implements Consumable, Purchasable {
     protected final int cost = 10;
     private final int healAmount = 1;
@@ -13,12 +16,23 @@ public class EnergyDrink extends Item implements Consumable, Purchasable {
         super("Energy Drink", '*', true);
     }
 
+    /**
+     * Heals the actor and removes the item from their inventory.
+     * @param actor The actor that will consume the Item.
+     * @return
+     */
     @Override
     public String consumedBy(Actor actor) {
         actor.heal(healAmount);
         actor.removeItemFromInventory(this);
         return String.format("%s heals %s by %d", this, actor,healAmount);
     }
+
+    /**
+     * Gets the allowable action for this item.
+     * @param owner the actor that owns the item
+     * @return
+     */
     @Override
     public ActionList allowableActions(Actor owner) {
         ActionList actions = super.allowableActions(owner);
@@ -26,6 +40,11 @@ public class EnergyDrink extends Item implements Consumable, Purchasable {
         return actions;
     }
 
+    /**
+     * Called when an actor purchases this item.
+     * @param actor
+     * @return
+     */
     @Override
     public String purchaseBy(Actor actor) {
         int purchaseCost = getCost();

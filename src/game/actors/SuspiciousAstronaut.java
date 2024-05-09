@@ -3,12 +3,12 @@ package game.actors;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.behaviours.AttackBehaviour;
-import game.behaviours.WanderBehaviour;
 
 public class SuspiciousAstronaut extends Monster{
-
+    private final int damage = 2147483647;
+    private final int hitRate = 100;
     /**
-     * A class representing the HuntsmanSpider monster.
+     * A class representing the Suspicious Astronaut monster.
      */
     public SuspiciousAstronaut() {
         super("Suspicious Astronaut", 'ඞ', 99);
@@ -26,6 +26,6 @@ public class SuspiciousAstronaut extends Monster{
      */
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
-        return new IntrinsicWeapon(2147483647, "bonks", 100);
+        return new IntrinsicWeapon(damage, "bonks", hitRate);
     }
 }

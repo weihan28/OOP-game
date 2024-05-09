@@ -12,6 +12,9 @@ import game.items.scraps.PurchaseAction;
 
 import java.util.ArrayList;
 
+/**
+ * A class that represents the Terminal in the game.
+ */
 public class Terminal extends Ground {
     private ArrayList<PurchasableFactory> purchasableFactories = new ArrayList<>();
 
@@ -22,6 +25,13 @@ public class Terminal extends Ground {
         this.purchasableFactories.add(new ToiletPaperRollFactory());
     }
 
+    /**
+     * Get all the allowed actions for interacting with the terminal.
+     * @param actor the Actor acting
+     * @param location the current Location
+     * @param direction the direction of the Ground from the Actor
+     * @return
+     */
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = new ActionList();

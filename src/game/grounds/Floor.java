@@ -18,6 +18,6 @@ public class Floor extends Ground {
 
     @Override
     public boolean canActorEnter(Actor actor) {
-        return actor.hasCapability(Status.CAN_ACTOR_ENTER);
+        return actor.hasCapability(Status.CAN_ENTER_FLOOR);
     }
 }
