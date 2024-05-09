@@ -14,16 +14,12 @@ public class PurchaseAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        if (actor.getBalance() - this.PurchasableItem.getcredits() >= 0) {
-            String description = this.PurchasableItem.Purchase(actor);
-            return String.format("%s purchased %s", actor, this.PurchasableItem, description);
-        } else {
-            return String.format("%s does not have enough credits to purchase %s", actor, this.PurchasableItem);
-        }
+        String description = this.PurchasableItem.Purchase(actor);
+        return String.format("%s purchased %s", actor, this.PurchasableItem, description);
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " purchased " + this.PurchasableItem;
+        return actor + " Can Purchase:  " + this.PurchasableItem;
     }
 }
