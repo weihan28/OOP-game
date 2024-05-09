@@ -9,7 +9,7 @@ import game.actors.AttackAction;
 /**
  * Class representing a Metal Pipe special scrap.
  */
-public class MetalPipe  extends WeaponItem {
+public class MetalPipe extends WeaponItem {
     public MetalPipe() {
         super("Metal Pipe", '!', 1, "hits", 20);
     }

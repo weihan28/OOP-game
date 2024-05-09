@@ -6,6 +6,9 @@ import edu.monash.fit2099.engine.items.Item;
 import game.items.fruits.Consumable;
 import game.items.fruits.ConsumeAction;
 
+/**
+ * A class that represents a Pot of Gold in the game.
+ */
 public class PotOfGold extends Item implements Consumable {
     private final int addBalanceAmount;
 

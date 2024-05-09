@@ -80,16 +80,10 @@ public class Application {
      * @param gameMap the map of the game containing the player.
      */
     private static void initialiseOtherEntities(GameMap gameMap){
-        setItems(gameMap);
-        setCraters(gameMap);
-        //gameMap.at(15, 10).addActor(new HuntsmanSpider());
-        //gameMap.at(7, 9).addActor(new HuntsmanSpider());
-//        gameMap.at(15,9).addActor(new AlienBug());
+        gameMap.at(15,5).setGround(new Terminal());
+        gameMap.at(3, 1).setGround(new SaplingInheritree());
+        gameMap.at(20, 10).setGround(new Crater());
 
-        //gameMap.at(3, 1).setGround(new SaplingInheritree());
-    }
-
-    private static void setItems(GameMap gameMap){
         gameMap.at(1,1).addItem(new LargeBolt());
         gameMap.at(2,1).addItem(new MetalSheet());
         gameMap.at(15,8).addItem(new MetalPipe());
@@ -97,11 +91,7 @@ public class Application {
         gameMap.at(17,8).addItem(new PotOfGold());
     }
 
-    private static void setCraters(GameMap gameMap){
-        // sets 2 craters that spawn different monsters at different spawn chances.
-        ActorSpawner AlienBugSpawner = new ActorSpawner(new AlienBugFactory(), 10);
-        ActorSpawner SuspiciousAstronautSpawner = new ActorSpawner(new SuspiciousAstronautFactory(), 5);
-        gameMap.at(20, 1).setGround(new Crater(AlienBugSpawner));
-        gameMap.at(20, 10).setGround(new Crater(SuspiciousAstronautSpawner));
+        gameMap.at(7, 9).addActor(new HuntsmanSpider());
+        gameMap.at(15,10).addActor(new AlienBug());
     }
 }
