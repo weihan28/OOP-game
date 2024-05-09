@@ -23,14 +23,9 @@ public class ToiletPaperRoll extends Item implements Purchasable{
      * @return the result string of the purchase.
      */
     @Override
-    public String purchaseBy(Actor actor) { // This should handle the computer systems purchase logic
-        int purchaseCost = getCost();
-        if (actor.getBalance()<purchaseCost) {
-            return String.format("Insufficient credits to purchase ");
-        }
-        actor.deductBalance(purchaseCost);
+    public String purchaseBy(Actor actor) {
         actor.addItemToInventory(this);
-        return String.format("%s successfully purchased %s for %d credits", actor, this, purchaseCost);
+        return String.format("%s successfully purchased %s", actor, this);
     }
 
     @Override

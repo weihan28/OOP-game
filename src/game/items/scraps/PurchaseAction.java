@@ -19,7 +19,12 @@ public class PurchaseAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        return purchasable.purchaseBy(actor);
+        int purchaseCost = purchasable.getCost();
+        if (actor.getBalance() < purchaseCost){
+            return  String.format("Actor has insufficient credits to purchase %s", purchasable);
+        }
+        actor.deductBalance(purchaseCost);
+        return String.format("%s for %d credits", purchasable.purchaseBy(actor), purchaseCost);
     }
 
     @Override
