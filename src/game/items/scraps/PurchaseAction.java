@@ -18,12 +18,12 @@ public class PurchaseAction extends Action {
            return String.format("Insufficient credits to purchase ");
         }
         actor.deductBalance(cost);
-        String description = purchasable.Purchase(actor);
+        String description = purchasable.purchaseBy(actor);
         return String.format("%s purchased %s.\n%s", actor, purchasable, description);
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " Can Purchase:  " + purchasable;
+        return actor + " can purchase:  " + purchasable;
     }
 }

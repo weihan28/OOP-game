@@ -83,7 +83,7 @@ public class Application {
 //        gameMap.at(2,1).addItem(new MetalSheet());
 //        gameMap.at(15,8).addItem(new MetalPipe());
 //
-//        gameMap.at(15, 10).addActor(new HuntsmanSpider());
+        gameMap.at(15, 10).addActor(new HuntsmanSpider());
 //        gameMap.at(7, 9).addActor(new HuntsmanSpider());
 //
 //        gameMap.at(3, 1).setGround(new SaplingInheritree());

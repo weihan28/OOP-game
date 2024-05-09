@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.items.Item;
 import game.items.scraps.Purchasable;
 
 public class EnergyDrink extends Item implements Consumable, Purchasable {
-    protected final int credits = 10;
+    protected final int cost = 10;
     private final int healAmount = 1;
 
     public EnergyDrink() {
@@ -27,13 +27,13 @@ public class EnergyDrink extends Item implements Consumable, Purchasable {
     }
 
     @Override
-    public String Purchase(Actor actor) {
+    public String purchaseBy(Actor actor) {
         actor.addItemToInventory(this);
         return "You have successfully purchased " + this;
     }
 
     @Override
     public int getCost() {
-        return credits;
+        return cost;
     }
 }
