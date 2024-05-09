@@ -28,8 +28,12 @@ public class EnergyDrink extends Item implements Consumable, Purchasable {
 
     @Override
     public String purchaseBy(Actor actor) {
+        int purchaseCost = getCost();
+        if (actor.getBalance()<cost) {
+            return String.format("Insufficient credits to purchase ");
+        }
         actor.addItemToInventory(this);
-        return "You have successfully purchased " + this;
+        return String.format("%s successfully purchased %s for %d credits", actor, this, purchaseCost);
     }
 
     @Override

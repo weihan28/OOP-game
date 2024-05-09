@@ -1,9 +1,7 @@
 package game.items.scraps;
 
-import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
-import edu.monash.fit2099.engine.positions.Location;
 
 import java.util.Random;
 
@@ -19,8 +17,13 @@ public class ToiletPaperRoll extends Item implements Purchasable{
 
     @Override
     public String purchaseBy(Actor actor) { // This should handle the computer systems purchase logic
+        int purchaseCost = getCost();
+        if (actor.getBalance()<cost) {
+            return String.format("Insufficient credits to purchase ");
+        }
+        actor.deductBalance(cost);
         actor.addItemToInventory(this);
-        return "You have successfully purchased " + this;
+        return String.format("%s successfully purchased %s for %d credits", actor, this, purchaseCost);
     }
 
     @Override
