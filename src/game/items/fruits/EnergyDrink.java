@@ -3,10 +3,13 @@ package game.items.fruits;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import game.items.scraps.Purchasable;
 
-public class EnergyDrink extends Item implements Consumable{
+public class EnergyDrink extends Item implements Consumable, Purchasable {
     protected final int credits = 10;
-    private final int healAmount = 1;
+    private final int healAmount = 1; // Dont think it should be a field variable as we want
+    // to reduce code smells and make it more readable.
+
     /***
      * Constructor.
      *  @param name the name of this Item
@@ -15,6 +18,10 @@ public class EnergyDrink extends Item implements Consumable{
      */
     public EnergyDrink(String name, char displayChar, boolean portable) {
         super("Energy Drink", '*', true);
+    }
+
+    public int getCredits(){
+        return credits;
     }
 
     @Override
@@ -28,5 +35,10 @@ public class EnergyDrink extends Item implements Consumable{
         ActionList actions = super.allowableActions(owner);
         actions.add(new ConsumeAction(this));
         return actions;
+    }
+
+    @Override
+    public String Purchase(Actor actor) {
+        return null;
     }
 }

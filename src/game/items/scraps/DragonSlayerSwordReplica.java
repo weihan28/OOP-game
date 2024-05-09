@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.weapons.Weapon;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actors.AttackAction;
 
-public class DragonSlayerSwordReplica extends WeaponItem {
+public class DragonSlayerSwordReplica extends WeaponItem implements Purchasable {
     protected final int credits = 100;
     /**
      * Constructor.
@@ -21,5 +21,13 @@ public class DragonSlayerSwordReplica extends WeaponItem {
         ActionList actions = new ActionList();
         actions.add(new AttackAction(otherActor, location.toString(), this));
         return actions;
+    }
+    public int getCredits(){
+        return credits;
+    }
+
+    @Override
+    public String Purchase(Actor actor) {
+        return null;
     }
 }
