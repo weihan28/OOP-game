@@ -5,12 +5,15 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import game.items.scraps.Purchasable;
 
+import java.util.Random;
+
 /**
  * A class that represents a Energy Drink in the game.
  */
 public class EnergyDrink extends Item implements Consumable, Purchasable {
     protected final int cost = 10;
     private final int healAmount = 1;
+    private final Random random = new Random();
 
     public EnergyDrink() {
         super("Energy Drink", '*', true);
@@ -57,6 +60,6 @@ public class EnergyDrink extends Item implements Consumable, Purchasable {
 
     @Override
     public int getCost() {
-        return cost;
+        return (random.nextInt(100)<=20) ? cost * 2 : cost;
     }
 }
