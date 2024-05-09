@@ -6,5 +6,5 @@ public interface Purchasable {
 
     public String Purchase(Actor actor);
 
-    public int getcredits();
+    public int getCost();
 }

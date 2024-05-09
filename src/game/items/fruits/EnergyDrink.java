@@ -28,11 +28,12 @@ public class EnergyDrink extends Item implements Consumable, Purchasable {
 
     @Override
     public String Purchase(Actor actor) {
-        return null;
+        actor.addItemToInventory(this);
+        return "You have successfully purchased " + this;
     }
 
     @Override
-    public int getcredits() {
+    public int getCost() {
         return credits;
     }
 }

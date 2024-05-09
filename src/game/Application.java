@@ -34,7 +34,7 @@ public class Application {
         World world = new World(new Display());
 
         FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(),
-                new Wall(), new Floor(), new Puddle(), new ComputerSystem());
+                new Wall(), new Floor(), new Puddle());
 
         List<String> map = Arrays.asList(
                         "...~~~~.........~~~...........",
@@ -42,7 +42,7 @@ public class Application {
                         "...~~~........................",
                         "..............................",
                         ".............#####............",
-                        ".............#=__#...........~",
+                        ".............#___#...........~",
                         ".............#___#..........~~",
                         ".............##_##.........~~~",
                         ".................~~........~~~",
@@ -65,6 +65,8 @@ public class Application {
             }
         }
         Player player = new Player("Intern", '@', 4);
+
+        player.addBalance(300);
         world.addPlayer(player, gameMap.at(15, 6));
 
         initialiseOtherEntities(gameMap);
@@ -77,16 +79,17 @@ public class Application {
      * @param gameMap the map of the game containing the player.
      */
     private static void initialiseOtherEntities(GameMap gameMap){
-        gameMap.at(1,1).addItem(new LargeBolt());
-        gameMap.at(2,1).addItem(new MetalSheet());
-        gameMap.at(15,8).addItem(new MetalPipe());
-
-        gameMap.at(15, 10).addActor(new HuntsmanSpider());
-        gameMap.at(7, 9).addActor(new HuntsmanSpider());
-
-        gameMap.at(3, 1).setGround(new SaplingInheritree());
-
-        gameMap.at(20, 1).setGround(new Crater());
-        gameMap.at(20, 10).setGround(new Crater());
+//        gameMap.at(1,1).addItem(new LargeBolt());
+//        gameMap.at(2,1).addItem(new MetalSheet());
+//        gameMap.at(15,8).addItem(new MetalPipe());
+//
+//        gameMap.at(15, 10).addActor(new HuntsmanSpider());
+//        gameMap.at(7, 9).addActor(new HuntsmanSpider());
+//
+//        gameMap.at(3, 1).setGround(new SaplingInheritree());
+//
+//        gameMap.at(20, 1).setGround(new Crater());
+//        gameMap.at(20, 10).setGround(new Crater());
+        gameMap.at(15,5).setGround(new ComputerSystem());
     }
 }

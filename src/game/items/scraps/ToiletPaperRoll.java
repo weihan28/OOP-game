@@ -20,11 +20,12 @@ public class ToiletPaperRoll extends Item implements Purchasable{
 
     @Override
     public String Purchase(Actor actor) { // This should handle the computer systems purchase logic
-        return null;
+        actor.addItemToInventory(this);
+        return "You have successfully purchased " + this;
     }
 
     @Override
-    public int getcredits() {
+    public int getCost() {
         return credits;
     }
 

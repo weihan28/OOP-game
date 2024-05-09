@@ -8,8 +8,12 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actors.AttackAction;
 import game.grounds.ComputerSystem;
 
+import java.util.Random;
+
 public class DragonSlayerSwordReplica extends WeaponItem implements Purchasable {
-    protected final int credits = 100;
+    private final int credits = 100;
+    private final int purchaseChance = 50;
+    private final Random random = new Random();
     /**
      * Constructor.
      *
@@ -17,35 +21,26 @@ public class DragonSlayerSwordReplica extends WeaponItem implements Purchasable 
     public DragonSlayerSwordReplica() {
         super("DragonSlayerSwordReplica", 'x', 50, "slashes", 75);
     }
+
+    @Override
+    public String Purchase(Actor actor) {
+        if (random.nextInt(100) <= -1) {
+            actor.addItemToInventory(this);
+            return "You have successfully purchased " + this;
+        } else {
+            return String.format("An error occurred while purchasing %s", this);
+        }
+    }
+
+    @Override
+    public int getCost() {
+        return credits;
+    }
+
     @Override
     public ActionList allowableActions(Actor otherActor, Location location){
         ActionList actions = new ActionList();
-        actions.add(new AttackAction(otherActor, location.toString(), this));
-        if (location.getGround() instanceof ComputerSystem) {
-            actions.add(new PurchaseAction(this));
-        }
+        actions.add(new PurchaseAction(this));
         return actions;
-    }
-
-    @Override
-    public String Purchase(Actor actor) { // handle the computer systems purchase logic for this item
-        // error if credits < 100
-        // if has 100 credits, take and 50% chance of giving item, 50% chance throwing error
-        if (actor.getBalance() < this.getcredits()) {
-            return "Insufficient credits to purchase " + this;
-        } else {
-            actor.deductBalance(actor.getBalance() - this.getcredits());
-            if (Math.random() < 0.5) {
-                actor.addItemToInventory(this);
-                return "You have successfully purchased " + this;
-            } else {
-                return "An error occurred while purchasing " + this;
-            }
-        }
-    }
-
-    @Override
-    public int getcredits() {
-        return credits;
     }
 }
