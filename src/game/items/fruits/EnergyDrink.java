@@ -7,17 +7,9 @@ import game.items.scraps.Purchasable;
 
 public class EnergyDrink extends Item implements Consumable, Purchasable {
     protected final int credits = 10;
-    private final int healAmount = 1; // Dont think it should be a field variable as we want
-    // to reduce code smells and make it more readable.
+    private final int healAmount = 1;
 
-    /***
-     * Constructor.
-     *  @param name the name of this Item
-     * @param displayChar the character to use to represent this item if it is on the ground
-     * @param portable true if and only if the Item can be picked up
-     */
-
-    public EnergyDrink(String name, char displayChar, boolean portable) {
+    public EnergyDrink() {
         super("Energy Drink", '*', true);
     }
 

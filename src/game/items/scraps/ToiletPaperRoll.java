@@ -17,15 +17,6 @@ public class ToiletPaperRoll extends Item implements Purchasable{
         super("ToiletPaperRoll", 's', true);
     }
 
-    @Override
-    public ActionList allowableActions(Actor otherActor, Location location){
-        ActionList actions = new ActionList();
-        if (location.getGround() instanceof ComputerSystem) {
-            actions.add(new PurchaseAction(this));
-        }
-        return actions;
-    }
-
 
     @Override
     public String Purchase(Actor actor) { // This should handle the computer systems purchase logic
@@ -35,5 +26,12 @@ public class ToiletPaperRoll extends Item implements Purchasable{
     @Override
     public int getcredits() {
         return credits;
+    }
+
+    @Override
+    public ActionList allowableActions(Actor otherActor, Location location){
+        ActionList actions = new ActionList();
+        actions.add(new PurchaseAction(this));
+        return actions;
     }
 }
