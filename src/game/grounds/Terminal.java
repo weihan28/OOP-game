@@ -20,7 +20,7 @@ public class Terminal extends Ground {
     private final ArrayList<PurchasableFactory> purchasableFactories;
 
     public Terminal(ArrayList<PurchasableFactory> purchasableFactories) {
-        super('='); // we need to change this through dependency injection
+        super('=');
         this.purchasableFactories = purchasableFactories;
     }
 
