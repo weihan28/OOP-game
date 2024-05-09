@@ -23,7 +23,7 @@ public class DragonSlayerSwordReplica extends WeaponItem implements Purchasable 
     @Override
     public String purchaseBy(Actor actor) {
         int purchaseCost = getCost();
-        if (actor.getBalance()<cost) {
+        if (actor.getBalance()<purchaseCost) {
             return String.format("Insufficient credits to purchase ");
         }
         actor.deductBalance(purchaseCost);
