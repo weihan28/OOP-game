@@ -61,6 +61,6 @@ public class EnergyDrink extends Item implements Consumable, Purchasable {
 
     @Override
     public int getCost() {
-        return (random.nextInt(100)<=20) ? cost * 2 : cost;
+        return (random.nextInt(100)<= 20) ? cost * 2 : cost;
     }
 }

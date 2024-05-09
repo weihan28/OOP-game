@@ -2,17 +2,15 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.factories.ActorFactory;
-import game.factories.HuntsmanSpiderFactory;
-import game.spawners.ActorSpawner;
+import game.spawners.Spawner;
 
 /**
  * A class that represents a crater.
  */
 public class Crater extends Ground {
-    private ActorSpawner spawner;
+    private Spawner spawner;
 
-    public Crater(ActorSpawner spawner) {
+    public Crater(Spawner spawner) {
         super('u');
         this.spawner = spawner;
     }
