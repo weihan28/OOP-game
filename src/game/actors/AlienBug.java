@@ -1,7 +1,11 @@
 package game.actors;
 
+import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.GameMap;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.PickUpBehaviour;
+
 import java.util.Random;
 
 /**
@@ -14,7 +18,6 @@ public class AlienBug extends Monster {
     public AlienBug() {
         super(generateName(), 'a', 2);
         this.behaviours.put(10, new PickUpBehaviour());
-        this.behaviours.put(20, new FollowBehaviour(Status.FOLLOWABLE_BY_ALIEN));
         this.addCapability(Status.CAN_ENTER_FLOOR);
     }
 
@@ -24,5 +27,13 @@ public class AlienBug extends Monster {
             digits += (String.valueOf(random.nextInt(10)));
         }
         return digits;
+    }
+
+    @Override
+    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
+        if (otherActor.hasCapability(Status.FOLLOWABLE_BY_ALIEN)){
+            this.behaviours.put(20, new FollowBehaviour(otherActor));
+        }
+        return super.allowableActions(otherActor, direction, map);
     }
 }

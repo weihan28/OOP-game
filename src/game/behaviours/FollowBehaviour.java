@@ -21,20 +21,14 @@ import game.actors.Status;
  * @author chinweihan
  */
 public class FollowBehaviour implements Behaviour {
-    private Status statusToFollow;
     private Actor target;
 
     /**
      * Constructor for creating a FollowBehaviour instance.
-     * @param statusToFollow the status that all targets possess.
+     * @param target actor to follow.
      */
-    public FollowBehaviour(Status statusToFollow) {
-        this.statusToFollow = statusToFollow;
-        this.target = null;
-    }
-
-    public void setTarget(Actor actor) {
-        this.target = actor;
+    public FollowBehaviour(Actor target) {
+        this.target = target;
     }
 
     /**
@@ -45,15 +39,7 @@ public class FollowBehaviour implements Behaviour {
      */
     @Override
     public Action getAction(Actor actor, GameMap map) {
-        boolean newTargetInRange = updateNewTarget(actor, map);
-        if (target==null || !map.contains(target) || !map.contains(actor))
-            return null;
-
-        if (!newTargetInRange){
-            Action action = getFollowDirection(actor, target, map);
-            return action;
-        }
-        return null;
+        return getFollowDirection(actor, target, map);
     }
 
     /**
@@ -79,26 +65,6 @@ public class FollowBehaviour implements Behaviour {
             }
         }
         return null;
-    }
-
-    /**
-     * Updates the target if another actor is within the range.
-     * @param actor
-     * @param map
-     * @return Updates the target and returns true if another valid target is nearby.
-     */
-    private boolean updateNewTarget(Actor actor, GameMap map) {
-        for (Exit exit : map.locationOf(actor).getExits()) {
-            Location destination = exit.getDestination();
-            if (destination.containsAnActor()){
-                Actor target = destination.getActor();
-                if (target.hasCapability(statusToFollow)){
-                    this.target = target;
-                    return true;
-                }
-            }
-        }
-        return false;
     }
 
     /**
