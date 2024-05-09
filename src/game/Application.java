@@ -7,8 +7,13 @@ import edu.monash.fit2099.engine.positions.World;
 
 import game.displays.FancyMessage;
 import game.actors.*;
+import game.factories.ActorFactory;
+import game.factories.AlienBugFactory;
+import game.factories.HuntsmanSpiderFactory;
+import game.factories.SuspiciousAstronautFactory;
 import game.grounds.*;
 import game.items.scraps.*;
+import game.spawners.ActorSpawner;
 import game.trees.SaplingInheritree;
 
 import java.util.Arrays;
@@ -84,6 +89,7 @@ public class Application {
         gameMap.at(15,8).addItem(new MetalPipe());
         gameMap.at(16,8).addItem(new JarOfPickles());
         gameMap.at(17,8).addItem(new PotOfGold());
+    }
 
         gameMap.at(7, 9).addActor(new HuntsmanSpider());
         gameMap.at(15,10).addActor(new AlienBug());

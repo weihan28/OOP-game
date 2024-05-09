@@ -2,6 +2,7 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.factories.ActorFactory;
 import game.factories.HuntsmanSpiderFactory;
 import game.spawners.ActorSpawner;
 
@@ -11,9 +12,9 @@ import game.spawners.ActorSpawner;
 public class Crater extends Ground {
     private ActorSpawner spawner;
 
-    public Crater() {
+    public Crater(ActorSpawner spawner) {
         super('u');
-        this.spawner = new ActorSpawner(new HuntsmanSpiderFactory(), 5);
+        this.spawner = spawner;
     }
 
     /**
