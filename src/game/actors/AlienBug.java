@@ -31,7 +31,7 @@ public class AlienBug extends Monster {
 
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
-        if (otherActor.hasCapability(Status.FOLLOWABLE_BY_ALIEN)){
+        if (otherActor.hasCapability(Status.FOLLOWABLE_BY_ALIEN)) {
             this.behaviours.put(20, new FollowBehaviour(otherActor));
         }
         return super.allowableActions(otherActor, direction, map);

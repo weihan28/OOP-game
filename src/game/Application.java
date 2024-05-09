@@ -7,16 +7,14 @@ import edu.monash.fit2099.engine.positions.World;
 
 import game.displays.FancyMessage;
 import game.actors.*;
-import game.factories.ActorFactory;
-import game.factories.AlienBugFactory;
-import game.factories.HuntsmanSpiderFactory;
-import game.factories.SuspiciousAstronautFactory;
+import game.factories.*;
 import game.grounds.*;
 import game.items.scraps.*;
 import game.spawners.ActorSpawner;
 import game.spawners.Spawner;
 import game.trees.SaplingInheritree;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -70,6 +68,7 @@ public class Application {
         }
         Player player = new Player("Intern", '@', 4);
         world.addPlayer(player, gameMap.at(15, 6));
+        player.addBalance(100);
 
         initialiseOtherEntities(gameMap);
         world.run();
@@ -81,7 +80,12 @@ public class Application {
      * @param gameMap the map of the game containing the player.
      */
     private static void initialiseOtherEntities(GameMap gameMap){
-        gameMap.at(15,5).setGround(new Terminal());
+        ArrayList<PurchasableFactory> purchasableFactories = new ArrayList<>();
+        purchasableFactories.add(new EnergyDrinkFactory());
+        purchasableFactories.add(new DragonSlayerSwordReplicaFactory());
+        purchasableFactories.add(new ToiletPaperRollFactory());
+        gameMap.at(15,5).setGround(new Terminal(purchasableFactories));
+
         gameMap.at(3, 1).setGround(new SaplingInheritree());
         Spawner huntsmanSpiderSpawner = new ActorSpawner(new HuntsmanSpiderFactory(), 10);
         Spawner susAstroSpawner = new ActorSpawner(new SuspiciousAstronautFactory(), 5);

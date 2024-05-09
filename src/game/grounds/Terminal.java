@@ -16,13 +16,12 @@ import java.util.ArrayList;
  * A class that represents the Terminal in the game.
  */
 public class Terminal extends Ground {
-    private ArrayList<PurchasableFactory> purchasableFactories = new ArrayList<>();
 
-    public Terminal() {
+    private final ArrayList<PurchasableFactory> purchasableFactories;
+
+    public Terminal(ArrayList<PurchasableFactory> purchasableFactories) {
         super('=');
-        this.purchasableFactories.add(new EnergyDrinkFactory());
-        this.purchasableFactories.add(new DragonSlayerSwordReplicaFactory());
-        this.purchasableFactories.add(new ToiletPaperRollFactory());
+        this.purchasableFactories = purchasableFactories;
     }
 
     /**

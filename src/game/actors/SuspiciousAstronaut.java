@@ -5,8 +5,7 @@ import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.behaviours.AttackBehaviour;
 
 public class SuspiciousAstronaut extends Monster{
-    private final int damage = 2147483647;
-    private final int hitRate = 100;
+    private final int HIT_RATE = 100;
     /**
      * A class representing the Suspicious Astronaut monster.
      */
@@ -26,6 +25,6 @@ public class SuspiciousAstronaut extends Monster{
      */
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
-        return new IntrinsicWeapon(damage, "bonks", hitRate);
+        return new IntrinsicWeapon(Integer.MAX_VALUE, "bonks", HIT_RATE);
     }
 }
