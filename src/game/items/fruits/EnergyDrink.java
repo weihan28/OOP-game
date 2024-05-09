@@ -16,12 +16,9 @@ public class EnergyDrink extends Item implements Consumable, Purchasable {
      * @param displayChar the character to use to represent this item if it is on the ground
      * @param portable true if and only if the Item can be picked up
      */
+
     public EnergyDrink(String name, char displayChar, boolean portable) {
         super("Energy Drink", '*', true);
-    }
-
-    public int getCredits(){
-        return credits;
     }
 
     @Override
@@ -40,5 +37,10 @@ public class EnergyDrink extends Item implements Consumable, Purchasable {
     @Override
     public String Purchase(Actor actor) {
         return null;
+    }
+
+    @Override
+    public int getcredits() {
+        return credits;
     }
 }

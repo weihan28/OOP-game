@@ -13,12 +13,13 @@ public class ToiletPaperRoll extends Item implements Purchasable{
         super("ToiletPaperRoll", 's', true);
     }
 
-    public int getCredits(){
-        return credits;
+    @Override
+    public String Purchase(Actor actor) { // This should handle the computer systems purchase logic
+        return null;
     }
 
     @Override
-    public String Purchase(Actor actor) {
-        return null;
+    public int getcredits() {
+        return credits;
     }
 }

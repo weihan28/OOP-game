@@ -22,12 +22,14 @@ public class DragonSlayerSwordReplica extends WeaponItem implements Purchasable 
         actions.add(new AttackAction(otherActor, location.toString(), this));
         return actions;
     }
-    public int getCredits(){
-        return credits;
-    }
 
     @Override
     public String Purchase(Actor actor) {
         return null;
+    }
+
+    @Override
+    public int getcredits() {
+        return credits;
     }
 }
