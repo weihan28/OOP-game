@@ -7,7 +7,6 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.actions.MoveActorAction;
 import edu.monash.fit2099.engine.actors.Behaviour;
-import game.actors.Status;
 
 /**
  * A class that figures out a MoveAction that will move the actor one step
@@ -39,18 +38,6 @@ public class FollowBehaviour implements Behaviour {
      */
     @Override
     public Action getAction(Actor actor, GameMap map) {
-        return getFollowDirection(actor, target, map);
-    }
-
-    /**
-     * Gets the next MoveActorAction to follow the target.
-     * Returns null if there are no valid directions that move the actor closer to the target.
-     * @param actor
-     * @param target
-     * @param map
-     * @return MoveActorAction the action to follow the target.
-     */
-    private Action getFollowDirection(Actor actor, Actor target, GameMap map) {
         Location here = map.locationOf(actor);
         Location there = map.locationOf(target);
 
