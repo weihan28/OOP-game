@@ -86,7 +86,7 @@ public class Application {
         purchasableFactories.add(new ToiletPaperRollFactory());
         gameMap.at(15,5).setGround(new Terminal(purchasableFactories));
 
-        gameMap.at(3, 1).setGround(new SaplingInheritree());
+//        gameMap.at(3, 1).setGround(new SaplingInheritree());
         Spawner huntsmanSpiderSpawner = new ActorSpawner(new HuntsmanSpiderFactory(), 10);
         Spawner susAstroSpawner = new ActorSpawner(new SuspiciousAstronautFactory(), 5);
         gameMap.at(20, 10).setGround(new Crater(huntsmanSpiderSpawner));

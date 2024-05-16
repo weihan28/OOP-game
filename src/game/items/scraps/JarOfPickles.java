@@ -45,7 +45,7 @@ public class JarOfPickles extends Item implements Consumable {
     @Override
     public String consumedBy(Actor actor) {
         actor.removeItemFromInventory(this);
-        if(isExpired()){
+        if(!isExpired()){
             actor.heal(healAmount);
             return String.format("%s heals %s by %d", this, actor,healAmount);
         } else {
