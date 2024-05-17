@@ -6,8 +6,8 @@ import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.items.fruits.Consumable;
-import game.items.fruits.ConsumeAction;
+import game.items.actions.Consumable;
+import game.items.actions.ConsumeAction;
 
 /**
  * A class that represents a puddle in the game.

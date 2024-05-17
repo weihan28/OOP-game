@@ -3,11 +3,13 @@ package game.items.fruits;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import game.items.actions.Consumable;
+import game.items.actions.ConsumeAction;
 
 /**
  * Class representing a Fruit from the Inheritree.
  */
-public abstract class Fruit extends Item implements Consumable{
+public abstract class Fruit extends Item implements Consumable {
     private final int healAmount;
 
     public Fruit(String name,char displayChar, int healAmount){

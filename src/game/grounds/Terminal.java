@@ -4,11 +4,8 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.factories.DragonSlayerSwordReplicaFactory;
-import game.factories.EnergyDrinkFactory;
 import game.factories.PurchasableFactory;
-import game.factories.ToiletPaperRollFactory;
-import game.items.scraps.PurchaseAction;
+import game.items.actions.PurchaseAction;
 
 import java.util.ArrayList;
 

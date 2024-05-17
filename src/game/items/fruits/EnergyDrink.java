@@ -3,7 +3,9 @@ package game.items.fruits;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
-import game.items.scraps.Purchasable;
+import game.items.actions.Consumable;
+import game.items.actions.ConsumeAction;
+import game.items.actions.Purchasable;
 
 import java.util.Random;
 

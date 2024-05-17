@@ -1,7 +1,7 @@
 package game.factories;
 
 import game.items.fruits.EnergyDrink;
-import game.items.scraps.Purchasable;
+import game.items.actions.Purchasable;
 
 public class EnergyDrinkFactory implements PurchasableFactory {
     @Override

@@ -2,12 +2,13 @@ package game.items.scraps;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import game.items.actions.Purchasable;
 
 import java.util.Random;
 /**
  * A class that represents a Toilet Paper Roll in the game.
  */
-public class ToiletPaperRoll extends Item implements Purchasable{
+public class ToiletPaperRoll extends Item implements Purchasable {
     private final Random random = new Random();
     private final int cost = 5;
     private final int discountCost = 1;
