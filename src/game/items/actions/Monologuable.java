@@ -1,4 +1,4 @@
-package game.items.scraps;
+package game.items.actions;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
@@ -12,5 +12,5 @@ public interface Monologuable {
      * @param actor The actor that is talking to the object.
      * @return The description of the purchase result.
      */
-    public ActionList getMonologue(Actor actor);
+    public ActionList getMonologueOptions(Actor actor);
 }
