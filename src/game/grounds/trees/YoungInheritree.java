@@ -4,14 +4,12 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.items.fruits.Fruit;
 import game.items.fruits.SmallFruit;
 
-/**
- * A concrete class representing a sapling inheritree.
- */
-public class SaplingInheritree extends Inheritree{
+public class YoungInheritree extends Inheritree {
+
     int counter;
 
-    public SaplingInheritree() {
-        super('t', 30);
+    public YoungInheritree() {
+        super('y', 0);
         this.counter = 0;
     }
 
@@ -25,8 +23,8 @@ public class SaplingInheritree extends Inheritree{
     public void tick(Location location) {
         super.tick(location);
         counter++;
-        if(counter % 6 == 0){
-            location.setGround(new YoungInheritree());
+        if(counter % 5 == 0){
+            location.setGround(new MatureInheritree());
         }
     }
 
@@ -41,4 +39,3 @@ public class SaplingInheritree extends Inheritree{
         return new SmallFruit();
     }
 }
-

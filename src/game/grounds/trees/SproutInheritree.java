@@ -7,11 +7,11 @@ import game.items.fruits.SmallFruit;
 /**
  * A concrete class representing a sapling inheritree.
  */
-public class SaplingInheritree extends Inheritree{
+public class SproutInheritree extends Inheritree{
     int counter;
 
-    public SaplingInheritree() {
-        super('t', 30);
+    public SproutInheritree() {
+        super(',', 0);
         this.counter = 0;
     }
 
@@ -25,8 +25,8 @@ public class SaplingInheritree extends Inheritree{
     public void tick(Location location) {
         super.tick(location);
         counter++;
-        if(counter % 6 == 0){
-            location.setGround(new YoungInheritree());
+        if(counter % 3 == 0){
+            location.setGround(new SaplingInheritree());
         }
     }
 
@@ -41,4 +41,3 @@ public class SaplingInheritree extends Inheritree{
         return new SmallFruit();
     }
 }
-
