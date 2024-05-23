@@ -1,8 +1,8 @@
 package game.grounds.trees;
 
 import edu.monash.fit2099.engine.positions.Location;
-import game.behaviours.AttackBehaviour;
-import game.grounds.groundBehaviours.GrowBehaviour;
+import game.grounds.groundBehaviours.SpawnFruitGroundBehaviour;
+import game.items.fruitFactories.LargeFruitFactory;
 import game.items.fruits.Fruit;
 import game.items.fruits.LargeFruit;
 
@@ -11,7 +11,8 @@ import game.items.fruits.LargeFruit;
  */
 public class MatureInheritree extends Inheritree {
     public MatureInheritree() {
-        super('T', 20);
+        super('T');
+        this.behaviours.put(10, new SpawnFruitGroundBehaviour(20, new LargeFruitFactory()));
     }
 
     /**
@@ -23,16 +24,5 @@ public class MatureInheritree extends Inheritree {
     @Override
     public void tick(Location location) {
         super.tick(location);
-    }
-
-    /**
-     * creates a large fruit.
-     *
-     * @see Inheritree#createFruit()
-     * @return a Large Fruit object.
-     */
-    @Override
-    public Fruit createFruit() {
-        return new LargeFruit();
     }
 }
