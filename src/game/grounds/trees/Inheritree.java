@@ -1,17 +1,26 @@
 package game.grounds.trees;
 
+import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actions.DoNothingAction;
+import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.grounds.groundBehaviours.GroundBehaviour;
+import game.grounds.groundBehaviours.GrowBehaviour;
 import game.items.fruits.Fruit;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.TreeMap;
 
 /**
  * A abstract class representing the inheritree.
  */
 public abstract class Inheritree extends Ground{
+    protected Map<Integer, GrowBehaviour> behaviours = new TreeMap<>();
+
     private final Random random = new Random();
     private int spawnChance;
 
@@ -32,6 +41,9 @@ public abstract class Inheritree extends Ground{
         if(random.nextInt(100) <= spawnChance){
             spawnFruit(location);
         }
+        for (GroundBehaviour behaviour : behaviours.values()) {
+            behaviour.doAction(this, location);
+        }
     }
 
     /**
@@ -43,7 +55,6 @@ public abstract class Inheritree extends Ground{
         List<Exit> exits = location.getExits();
         Exit exitToSpawn = exits.get(random.nextInt(exits.size()));
         exitToSpawn.getDestination().addItem(createFruit());
-
     }
 
     /**

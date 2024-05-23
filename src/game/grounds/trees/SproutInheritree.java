@@ -1,6 +1,7 @@
 package game.grounds.trees;
 
 import edu.monash.fit2099.engine.positions.Location;
+import game.grounds.groundBehaviours.GrowBehaviour;
 import game.items.fruits.Fruit;
 import game.items.fruits.SmallFruit;
 
@@ -13,21 +14,7 @@ public class SproutInheritree extends Inheritree{
     public SproutInheritree() {
         super(',', 0);
         this.counter = 0;
-    }
-
-    /**
-     * Sapling Inheritree can also experience the joy of time.
-     *
-     * @see Inheritree#tick(Location)
-     * @param location The location of the Inheritree
-     */
-    @Override
-    public void tick(Location location) {
-        super.tick(location);
-        counter++;
-        if(counter % 3 == 0){
-            location.setGround(new SaplingInheritree());
-        }
+        this.behaviours.put(10, new GrowBehaviour(3, new SaplingInheritree()));
     }
 
     /**

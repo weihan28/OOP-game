@@ -1,6 +1,8 @@
 package game.grounds.trees;
 
 import edu.monash.fit2099.engine.positions.Location;
+import game.behaviours.AttackBehaviour;
+import game.grounds.groundBehaviours.GrowBehaviour;
 import game.items.fruits.Fruit;
 import game.items.fruits.LargeFruit;
 
