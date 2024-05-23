@@ -16,10 +16,34 @@ import java.util.ArrayList;
  * A class that represents an AI Device in the game known as Astley.
  */
 public class AIDevice extends Item implements Purchasable, Monologuable{
+    /**
+     * Cost to purchase Item
+     */
     private final int cost;
+    /**
+     * Fee charged for each subscription time interval
+     */
     private final int subscriptionFee;
+    /**
+     * Counter for ticks held by actor
+     */
     private int counter;
+    /**
+     * Specifies if device is currently subscribed and active
+     */
     private boolean isSubscribed;
+    /**
+     * Monologue parameter #1
+     */
+    private final int monologueItems;
+    /**
+     * Monologue parameter #2
+     */
+    private final int monologueCredits;
+    /**
+     * Monologue parameter #3
+     */
+    private final int monologueHealth;
     private final Random random = new Random();
 
     public AIDevice() {
@@ -28,6 +52,9 @@ public class AIDevice extends Item implements Purchasable, Monologuable{
         this.cost = 50;
         this.subscriptionFee = 1;
         this.isSubscribed = true;
+        this.monologueItems = 10;
+        this.monologueCredits = 50;
+        this.monologueHealth = 2;
     }
 
     /**
@@ -50,6 +77,11 @@ public class AIDevice extends Item implements Purchasable, Monologuable{
         return cost;
     }
 
+    /**
+     * Applies subscription fee to actor every 5 ticks.
+     * @param currentLocation The location of the actor carrying this Item.
+     * @param actor           The actor carrying this Item.
+     */
     @Override
     public void tick(Location currentLocation, Actor actor) {
         counter++;
@@ -93,13 +125,13 @@ public class AIDevice extends Item implements Purchasable, Monologuable{
         monologues.add("The factory will never gonna give you up, valuable intern!");
         monologues.add("We promise we never gonna let you down with a range of staff benefits.");
         monologues.add("We never gonna run around and desert you, dear intern!");
-        if (owner.getItemInventory().size() > 10){
+        if (owner.getItemInventory().size() > monologueItems){
             monologues.add("We never gonna make you cry with unfair compensation.");
         }
-        if (owner.getBalance() > 50){
+        if (owner.getBalance() > monologueCredits){
             monologues.add("Trust is essential in this business. We promise we never gonna say goodbye to a valuable intern like you.");
         }
-        if (owner.getAttribute(BaseActorAttributes.HEALTH) < 2){
+        if (owner.getAttribute(BaseActorAttributes.HEALTH) < monologueHealth){
             monologues.add("Don't worry, we never gonna tell a lie and hurt you, unlike those hostile creatures.");
         }
 
