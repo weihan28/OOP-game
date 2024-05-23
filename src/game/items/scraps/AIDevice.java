@@ -50,6 +50,11 @@ public class AIDevice extends Item implements Purchasable, Monologuable{
         return cost;
     }
 
+    /**
+     * Applies subscription fee to actor every 5 ticks.
+     * @param currentLocation The location of the actor carrying this Item.
+     * @param actor           The actor carrying this Item.
+     */
     @Override
     public void tick(Location currentLocation, Actor actor) {
         counter++;
