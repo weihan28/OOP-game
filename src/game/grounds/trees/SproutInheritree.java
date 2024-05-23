@@ -12,6 +12,6 @@ public class SproutInheritree extends Inheritree{
 
     public SproutInheritree() {
         super(',');
-        this.behaviours.put(10, new GrowGroundBehaviour(tickToGrow, new SaplingInheritree()));
+        this.behaviours.put(1, new GrowGroundBehaviour(tickToGrow, new SaplingInheritree()));
     }
 }

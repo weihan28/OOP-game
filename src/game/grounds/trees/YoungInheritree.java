@@ -1,6 +1,5 @@
 package game.grounds.trees;
 
-import edu.monash.fit2099.engine.positions.Location;
 import game.grounds.groundBehaviours.GrowGroundBehaviour;
 
 public class YoungInheritree extends Inheritree {
@@ -8,7 +7,6 @@ public class YoungInheritree extends Inheritree {
 
     public YoungInheritree() {
         super('y');
-        this.behaviours.put(10, new GrowGroundBehaviour(tickToGrow, new MatureInheritree()));
-
+        this.behaviours.put(1, new GrowGroundBehaviour(tickToGrow, new MatureInheritree()));
     }
 }

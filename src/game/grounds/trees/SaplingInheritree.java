@@ -15,8 +15,8 @@ public class SaplingInheritree extends Inheritree{
 
     public SaplingInheritree() {
         super('t');
-        this.behaviours.put(10, new GrowGroundBehaviour(tickToGrow, new YoungInheritree()));
-        this.behaviours.put(30, new SpawnFruitGroundBehaviour(spawnChance, new SmallFruitFactory()));
+        this.behaviours.put(1, new GrowGroundBehaviour(tickToGrow, new YoungInheritree()));
+        this.behaviours.put(2, new SpawnFruitGroundBehaviour(spawnChance, new SmallFruitFactory()));
     }
 }
 

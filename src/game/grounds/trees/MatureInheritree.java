@@ -14,6 +14,6 @@ public class MatureInheritree extends Inheritree {
 
     public MatureInheritree() {
         super('T');
-        this.behaviours.put(10, new SpawnFruitGroundBehaviour(spawnChance, new LargeFruitFactory()));
+        this.behaviours.put(1, new SpawnFruitGroundBehaviour(spawnChance, new LargeFruitFactory()));
     }
 }
