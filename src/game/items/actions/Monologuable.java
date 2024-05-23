@@ -10,7 +10,7 @@ public interface Monologuable {
     /**
      * Called when an actor talks to the object.
      * @param actor The actor that is talking to the object.
-     * @return The description of the purchase result.
+     * @return An ActionList of possible MonologueActions
      */
     public ActionList getMonologueOptions(Actor actor);
 }

@@ -9,6 +9,9 @@ import game.items.actions.Purchasable;
 import game.items.actions.Monologuable;
 import game.items.actions.MonologueAction;
 
+import java.util.Random;
+import java.util.ArrayList;
+
 /**
  * A class that represents an AI Device in the game known as Astley.
  */
@@ -16,14 +19,15 @@ public class AIDevice extends Item implements Purchasable, Monologuable{
     private final int cost;
     private final int subscriptionFee;
     private int counter;
-    private boolean isActive;
+    private boolean isSubscribed;
+    private final Random random = new Random();
 
     public AIDevice() {
         super("Astley", 'z', true);
         this.counter = 0;
         this.cost = 50;
         this.subscriptionFee = 1;
-        this.isActive = false;
+        this.isSubscribed = true;
     }
 
     /**
@@ -52,13 +56,12 @@ public class AIDevice extends Item implements Purchasable, Monologuable{
         if((counter % 5 == 0)){
             if (actor.getBalance() >= subscriptionFee){
                 actor.deductBalance(subscriptionFee);
-                isActive = true;
+                isSubscribed = true;
             } else {
-                isActive = false;
+                isSubscribed = false;
             }
         }
         super.tick(currentLocation, actor);
-        // awaiting specifications on how to count ticks and when subscription is active from ED
     }
 
     /**
@@ -71,27 +74,38 @@ public class AIDevice extends Item implements Purchasable, Monologuable{
      @Override
     public ActionList allowableActions(Actor owner) {
         ActionList actions = super.allowableActions(owner);
-        if (isActive) {
+        if (isSubscribed) {
             actions.add(getMonologueOptions(owner));
         }
         return actions;
     }
 
+    /**
+     * Called when an actor talks to the object.
+     * @param owner The actor that is talking to the object.
+     * @return An ActionList of possible MonologueActions
+     */
     @Override
     public ActionList getMonologueOptions(Actor owner){
         ActionList actions = new ActionList();
-        actions.add(new MonologueAction(this.toString(), "The factory will never gonna give you up, valuable intern!"));
-        actions.add(new MonologueAction(this.toString(), "We promise we never gonna let you down with a range of staff benefits."));
-        actions.add(new MonologueAction(this.toString(), "We never gonna run around and desert you, dear intern!"));
+
+        ArrayList<String> monologues = new ArrayList<>();
+        monologues.add("The factory will never gonna give you up, valuable intern!");
+        monologues.add("We promise we never gonna let you down with a range of staff benefits.");
+        monologues.add("We never gonna run around and desert you, dear intern!");
         if (owner.getItemInventory().size() > 10){
-            actions.add(new MonologueAction(this.toString(), "We never gonna make you cry with unfair compensation."));
+            monologues.add("We never gonna make you cry with unfair compensation.");
         }
         if (owner.getBalance() > 50){
-            actions.add(new MonologueAction(this.toString(), "Trust is essential in this business. We promise we never gonna say goodbye to a valuable intern like you."));
+            monologues.add("Trust is essential in this business. We promise we never gonna say goodbye to a valuable intern like you.");
         }
         if (owner.getAttribute(BaseActorAttributes.HEALTH) < 2){
-            actions.add(new MonologueAction(this.toString(), "Don't worry, we never gonna tell a lie and hurt you, unlike those hostile creatures."));
+            monologues.add("Don't worry, we never gonna tell a lie and hurt you, unlike those hostile creatures.");
         }
+
+        String monologue = monologues.get(random.nextInt(monologues.size()));
+        actions.add(new MonologueAction(this.toString(), monologue));
+
         return actions;
     }
 }

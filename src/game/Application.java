@@ -83,6 +83,7 @@ public class Application {
         purchasableFactories.add(new EnergyDrinkFactory());
         purchasableFactories.add(new DragonSlayerSwordReplicaFactory());
         purchasableFactories.add(new ToiletPaperRollFactory());
+        purchasableFactories.add(new AIDeviceFactory());
         gameMap.at(15,5).setGround(new Terminal(purchasableFactories));
 
 //        gameMap.at(3, 1).setGround(new SaplingInheritree());
