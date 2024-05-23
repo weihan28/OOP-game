@@ -1,15 +1,9 @@
 package game.grounds.trees;
 
-import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.grounds.groundBehaviours.GroundBehaviour;
-import game.grounds.groundBehaviours.GrowGroundBehaviour;
-import game.items.fruits.Fruit;
-
-import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.TreeMap;
 
 /**

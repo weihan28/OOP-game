@@ -10,19 +10,10 @@ import game.items.fruits.LargeFruit;
  * A concrete class representing a mature inheritree.
  */
 public class MatureInheritree extends Inheritree {
+    private int spawnChance = 20;
+
     public MatureInheritree() {
         super('T');
-        this.behaviours.put(10, new SpawnFruitGroundBehaviour(20, new LargeFruitFactory()));
-    }
-
-    /**
-     * Mature Inheritree can also experience the joy of time.
-     *
-     * @see Inheritree#tick(Location)
-     * @param location The location of the Inheritree
-     */
-    @Override
-    public void tick(Location location) {
-        super.tick(location);
+        this.behaviours.put(10, new SpawnFruitGroundBehaviour(spawnChance, new LargeFruitFactory()));
     }
 }

@@ -10,13 +10,13 @@ import game.items.fruits.SmallFruit;
  * A concrete class representing a sapling inheritree.
  */
 public class SaplingInheritree extends Inheritree{
-    private int counter;
+    private int tickToGrow = 6;
+    private int spawnChance = 30;
 
     public SaplingInheritree() {
         super('t');
-        this.counter = 0;
-        this.behaviours.put(10, new GrowGroundBehaviour(6, new YoungInheritree()));
-        this.behaviours.put(30, new SpawnFruitGroundBehaviour(30, new SmallFruitFactory()));
+        this.behaviours.put(10, new GrowGroundBehaviour(tickToGrow, new YoungInheritree()));
+        this.behaviours.put(30, new SpawnFruitGroundBehaviour(spawnChance, new SmallFruitFactory()));
     }
 }
 
