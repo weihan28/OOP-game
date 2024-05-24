@@ -9,14 +9,10 @@ import game.displays.FancyMessage;
 import game.actors.*;
 import game.factories.*;
 import game.grounds.*;
-import game.grounds.trees.SaplingInheritree;
 import game.grounds.trees.SproutInheritree;
-import game.items.scraps.*;
-import game.spawners.ActorSpawner;
-import game.spawners.Spawner;
+import game.maps.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -39,25 +35,11 @@ public class Application {
         FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(),
                 new Wall(), new Floor(), new Puddle());
 
-        List<String> map = Arrays.asList(
-                        "...~~~~.........~~~...........",
-                        "...~~~~.......................",
-                        "...~~~........................",
-                        "..............................",
-                        ".............#####............",
-                        ".............#___#...........~",
-                        ".............#___#..........~~",
-                        ".............##_##.........~~~",
-                        ".................~~........~~~",
-                        "................~~~~.......~~~",
-                        ".............~~~~~~~........~~",
-                        "......~.....~~~~~~~~.........~",
-                        ".....~~~...~~~~~~~~~..........",
-                        ".....~~~~~~~~~~~~~~~~........~",
-                        ".....~~~~~~~~~~~~~~~~~~~....~~");
+        Moon[] moons = {new Polymorphia(), new FactoryParkingLot(), new Refactorio()};
 
-        GameMap gameMap = new GameMap(groundFactory, map);
-        world.addGameMap(gameMap);
+        for (GameMap moon : moons){
+            world.addGameMap(moon);
+        }
 
         for (String line : FancyMessage.TITLE.split("\n")) {
             new Display().println(line);
@@ -68,25 +50,33 @@ public class Application {
             }
         }
         Player player = new Player("Intern", '@', 4);
-        world.addPlayer(player, gameMap.at(15, 6));
+        world.addPlayer(player, moons[0].at(15, 6));
         player.addBalance(100);
+        Terminal terminal = initaliseTerminal(moons);
 
-        initialiseOtherEntities(gameMap);
+        // separate initialisation of each moon's entities into functions for ease of comprehension
+        initialisePolymorphia(moons[0], terminal);
+        initialiseParkingLot(moons[1], terminal);
+        initialiseRefactorio(moons[2], terminal);
         world.run();
     }
 
-    /**
-     * Initialises the entities such as items and actors (excluding Player) onto the game map.
-     *
-     * @param gameMap the map of the game containing the player.
-     */
-    private static void initialiseOtherEntities(GameMap gameMap){
+    private static Terminal initaliseTerminal(Moon[] moons){
         ArrayList<PurchasableFactory> purchasableFactories = new ArrayList<>();
         purchasableFactories.add(new EnergyDrinkFactory());
         purchasableFactories.add(new DragonSlayerSwordReplicaFactory());
         purchasableFactories.add(new ToiletPaperRollFactory());
         purchasableFactories.add(new AIDeviceFactory());
-        gameMap.at(15,5).setGround(new Terminal(purchasableFactories));
+        return new Terminal(purchasableFactories, moons);
+    }
+    /**
+     * Initialises the entities such as items and actors (excluding Player) onto Polymorphia.
+     *
+     * @param gameMap the map of the game containing the player.
+     * @param terminal the terminal to use in the map
+     */
+    private static void initialisePolymorphia(GameMap gameMap, Terminal terminal){
+        gameMap.at(15,5).setGround(terminal);
 
         gameMap.at(3, 1).setGround(new SproutInheritree());
 //        Spawner huntsmanSpiderSpawner = new ActorSpawner(new HuntsmanSpiderFactory(), 10);
@@ -102,5 +92,14 @@ public class Application {
 //
 //        gameMap.at(7, 9).addActor(new HuntsmanSpider());
 //        gameMap.at(15,10).addActor(new AlienBug());
+    }
+
+    private static void initialiseParkingLot(GameMap gameMap, Terminal terminal){
+        gameMap.at(3,2).setGround(terminal);
+    }
+
+    private static void initialiseRefactorio(GameMap gameMap, Terminal terminal){
+        gameMap.at(15,5).setGround(terminal);
+
     }
 }
