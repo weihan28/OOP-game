@@ -3,12 +3,13 @@ package game.items.scraps;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import game.items.actions.Purchasable;
+import game.items.actions.Sellable;
 
 import java.util.Random;
 /**
  * A class that represents a Toilet Paper Roll in the game.
  */
-public class ToiletPaperRoll extends Item implements Purchasable {
+public class ToiletPaperRoll extends Item implements Purchasable, Sellable {
     private final Random random = new Random();
     private final int cost = 5;
     private final int discountCost = 1;
@@ -32,5 +33,24 @@ public class ToiletPaperRoll extends Item implements Purchasable {
     @Override
     public int getCost() {
         return (random.nextInt(100)<=chanceDiscount) ? cost : discountCost;
+    }
+
+    @Override
+    public String SellFrom(Actor actor) {
+        int deathRNG = new java.util.Random().nextInt(100);
+        if (deathRNG > 50) { // If you die
+            actor.hurt(Integer.MAX_VALUE);
+            return "Failed to sell Toilet Paper Roll, and Killed in the process!";
+        } else {
+            actor.removeItemFromInventory(this);
+            actor.addBalance(this.getSellValue());
+            return "Successfully sold Toilet Paper Roll for " + this.getSellValue() + " credits.";
+        }
+
+    }
+
+    @Override
+    public int getSellValue() {
+        return 1;
     }
 }

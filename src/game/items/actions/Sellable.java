@@ -13,4 +13,10 @@ public interface Sellable {
      */
     public String SellFrom(Actor actor);
 
+    /**
+     * Get the value that will be given to the user if they sell the item
+     * @return
+     */
+    public int getSellValue();
+
 }

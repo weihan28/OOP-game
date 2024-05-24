@@ -5,11 +5,12 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import game.items.actions.Consumable;
 import game.items.actions.ConsumeAction;
+import game.items.actions.Sellable;
 
 /**
  * A class that represents a Pot of Gold in the game.
  */
-public class PotOfGold extends Item implements Consumable {
+public class PotOfGold extends Item implements Consumable, Sellable {
     private final int addBalanceAmount;
 
     /**
@@ -43,5 +44,22 @@ public class PotOfGold extends Item implements Consumable {
         ActionList actions = super.allowableActions(owner);
         actions.add(new ConsumeAction(this));
         return actions;
+    }
+
+    @Override
+    public String SellFrom(Actor actor) {
+        actor.removeItemFromInventory(this);
+        int rand_change = new java.util.Random().nextInt(100);
+        if (rand_change < 25) {
+            return "Failed to sell Pot of Gold, Item taken but no money was given!";
+        } else {
+            actor.addBalance(this.getSellValue());
+            return "Successfully sold Pot of Gold for " + this.getSellValue() + " credits.";
+        }
+    }
+
+    @Override
+    public int getSellValue() {
+        return 500;
     }
 }

@@ -5,13 +5,14 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import game.items.actions.Consumable;
 import game.items.actions.ConsumeAction;
+import game.items.actions.Sellable;
 
 import java.util.Random;
 
 /**
  * A class that represents a Jar of Pickles in the game.
  **/
-public class JarOfPickles extends Item implements Consumable {
+public class JarOfPickles extends Item implements Consumable, Sellable {
     private final Random rand = new Random();
     private final int expireChance;
     private final int healAmount;
@@ -59,5 +60,24 @@ public class JarOfPickles extends Item implements Consumable {
         ActionList actions = super.allowableActions(owner);
         actions.add(new ConsumeAction(this));
         return actions;
+    }
+
+    @Override
+    public String SellFrom(Actor actor) {
+        //
+        actor.removeItemFromInventory(this);
+        int lucky_sell_RNG = rand.nextInt(100);
+        if (lucky_sell_RNG > 50) {
+            actor.addBalance(2 * this.getSellValue());
+            return "Successfully sold Jar of Pickles for " + 2  * this.getSellValue() + " credits instead of " + this.getSellValue() + " credits.";
+        } else {
+            actor.addBalance(this.getSellValue());
+            return "Jar of Pickles Sold for " + this.getSellValue() + " credits.";
+        }
+    }
+
+    @Override
+    public int getSellValue() {
+        return 25;
     }
 }
