@@ -3,8 +3,8 @@ package game.items.scraps;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
-import game.items.fruits.Consumable;
-import game.items.fruits.ConsumeAction;
+import game.items.actions.Consumable;
+import game.items.actions.ConsumeAction;
 
 import java.util.Random;
 
@@ -45,7 +45,7 @@ public class JarOfPickles extends Item implements Consumable {
     @Override
     public String consumedBy(Actor actor) {
         actor.removeItemFromInventory(this);
-        if(isExpired()){
+        if(!isExpired()){
             actor.heal(healAmount);
             return String.format("%s heals %s by %d", this, actor,healAmount);
         } else {

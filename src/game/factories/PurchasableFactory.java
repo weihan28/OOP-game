@@ -1,6 +1,6 @@
 package game.factories;
 
-import game.items.scraps.Purchasable;
+import game.items.actions.Purchasable;
 
 public interface PurchasableFactory {
     public Purchasable createPurchasable();

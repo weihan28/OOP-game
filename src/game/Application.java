@@ -9,10 +9,11 @@ import game.displays.FancyMessage;
 import game.actors.*;
 import game.factories.*;
 import game.grounds.*;
+import game.grounds.trees.SaplingInheritree;
+import game.grounds.trees.SproutInheritree;
 import game.items.scraps.*;
 import game.spawners.ActorSpawner;
 import game.spawners.Spawner;
-import game.trees.SaplingInheritree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -84,21 +85,22 @@ public class Application {
         purchasableFactories.add(new EnergyDrinkFactory());
         purchasableFactories.add(new DragonSlayerSwordReplicaFactory());
         purchasableFactories.add(new ToiletPaperRollFactory());
+        purchasableFactories.add(new AIDeviceFactory());
         gameMap.at(15,5).setGround(new Terminal(purchasableFactories));
 
-        gameMap.at(3, 1).setGround(new SaplingInheritree());
-        Spawner huntsmanSpiderSpawner = new ActorSpawner(new HuntsmanSpiderFactory(), 10);
-        Spawner susAstroSpawner = new ActorSpawner(new SuspiciousAstronautFactory(), 5);
-        gameMap.at(20, 10).setGround(new Crater(huntsmanSpiderSpawner));
-        gameMap.at(20, 5).setGround(new Crater(susAstroSpawner));
-
-        gameMap.at(1,1).addItem(new LargeBolt());
-        gameMap.at(2,1).addItem(new MetalSheet());
-        gameMap.at(15,8).addItem(new MetalPipe());
-        gameMap.at(16,8).addItem(new JarOfPickles());
-        gameMap.at(17,8).addItem(new PotOfGold());
-
-        gameMap.at(7, 9).addActor(new HuntsmanSpider());
-        gameMap.at(15,10).addActor(new AlienBug());
+        gameMap.at(3, 1).setGround(new SproutInheritree());
+//        Spawner huntsmanSpiderSpawner = new ActorSpawner(new HuntsmanSpiderFactory(), 10);
+//        Spawner susAstroSpawner = new ActorSpawner(new SuspiciousAstronautFactory(), 5);
+//        gameMap.at(20, 10).setGround(new Crater(huntsmanSpiderSpawner));
+//        gameMap.at(20, 5).setGround(new Crater(susAstroSpawner));
+//
+//        gameMap.at(1,1).addItem(new LargeBolt());
+//        gameMap.at(2,1).addItem(new MetalSheet());
+//        gameMap.at(15,8).addItem(new MetalPipe());
+//        gameMap.at(16,8).addItem(new JarOfPickles());
+//        gameMap.at(17,8).addItem(new PotOfGold());
+//
+//        gameMap.at(7, 9).addActor(new HuntsmanSpider());
+//        gameMap.at(15,10).addActor(new AlienBug());
     }
 }
