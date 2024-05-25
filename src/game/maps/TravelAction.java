@@ -11,6 +11,12 @@ public class TravelAction extends Action {
     }
     @Override
     public String execute(Actor actor, GameMap currentMap) {
+        /**
+         * The teleport will fail if the spot has another actor there.
+         * should add a actor check using
+         * moon.isAnActorAt(location)
+         *
+         */
         currentMap.removeActor(actor);
         moon.addActor(actor, moon.getPlayerSpawn());
         return "Travelling to " + moon;
