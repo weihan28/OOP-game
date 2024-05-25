@@ -37,7 +37,7 @@ public class Application {
         }
 
         World world = new World(new Display());
-        Moon[] moons = {new FactoryParkingLot(),new Polymorphia(), new Refactorio()};
+        Moon[] moons = {new Polymorphia(), new FactoryParkingLot(), new Refactorio()};
 
         for (GameMap moon : moons){
             world.addGameMap(moon);
