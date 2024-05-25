@@ -32,9 +32,6 @@ public class Application {
 
         World world = new World(new Display());
 
-        FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(),
-                new Wall(), new Floor(), new Puddle());
-
         Moon[] moons = {new Polymorphia(), new FactoryParkingLot(), new Refactorio()};
 
         for (GameMap moon : moons){
@@ -55,6 +52,19 @@ public class Application {
         Terminal terminal = initaliseTerminal(moons);
 
         // separate initialisation of each moon's entities into functions for ease of comprehension
+        /**
+         * what happens if we accidentally put initialisePolymorphia(moon[1]),
+         * is moon[1] really Polymorphia?
+         * if someone deletes the moon in the middle, we would have to shift all indices backward.
+         *
+         * maybe encapsulate initilisation within creation of the moon Polymorphia.
+         *
+         * func createPolymorphia() returns Polymorphia Instance=> {
+         *      polymorphia = new Polymorphia()
+         *      initialisePolymorphia(polymorphia)
+         *      return polymorphia
+         * }
+         */
         initialisePolymorphia(moons[0], terminal);
         initialiseParkingLot(moons[1], terminal);
         initialiseRefactorio(moons[2], terminal);
@@ -69,6 +79,7 @@ public class Application {
         purchasableFactories.add(new AIDeviceFactory());
         return new Terminal(purchasableFactories, moons);
     }
+
     /**
      * Initialises the entities such as items and actors (excluding Player) onto Polymorphia.
      *

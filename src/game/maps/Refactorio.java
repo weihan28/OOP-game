@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.grounds.Dirt;
 import game.grounds.Floor;
+import game.grounds.Puddle;
 import game.grounds.Wall;
 
 import java.util.Arrays;
@@ -27,7 +28,10 @@ public class Refactorio extends Moon {
             "....................~~........",
             ".............~~...............",
             "............~~~~..............");
-    private final static FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor());
+    /**
+     * Puddle is missing from ground factory, making the factory return nullPointerExceptiion
+     */
+    private final static FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Puddle());
     private final static int[] playerSpawn = {15, 6};
 
     public Refactorio(){

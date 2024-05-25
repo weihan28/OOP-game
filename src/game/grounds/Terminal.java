@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.factories.PurchasableFactory;
 import game.items.actions.PurchaseAction;
 import game.maps.Moon;
+import game.maps.TravelAction;
 
 import java.util.ArrayList;
 
@@ -41,7 +42,7 @@ public class Terminal extends Ground {
         // add all moons to travel to
         for (Moon moon: moons){
             if (location.map() != moon) {
-                actions.add(moon.getTravelAction());
+                actions.add(new TravelAction(moon));
             }
         }
         return actions;

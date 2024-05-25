@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class FactoryParkingLot extends Moon {
-    public final static List<String> mapString = Arrays.asList(
+    public static List<String> mapString = Arrays.asList(
             ".......",
             ".#####.",
             ".#___#.",
@@ -23,12 +23,11 @@ public class FactoryParkingLot extends Moon {
             ".......",
             ".......",
             ".......");
-    private final static int[] playerSpawn = {3, 3};
-
-    private final static FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor());
+    private static FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor());
+    private static int[] playerSpawn = {3, 3};
 
     public FactoryParkingLot(){
-        super(groundFactory, mapString);
+        super( groundFactory, mapString);
     }
 
     public Location getPlayerSpawn(){

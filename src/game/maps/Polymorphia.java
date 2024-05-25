@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Polymorphia extends Moon {
-    private final static List<String> mapString = Arrays.asList(
+    private static List<String> mapString = Arrays.asList(
             "...~~~~.........~~~...........",
             "...~~~~.......................",
             "...~~~........................",
@@ -29,9 +29,8 @@ public class Polymorphia extends Moon {
             ".....~~~...~~~~~~~~~..........",
             ".....~~~~~~~~~~~~~~~~........~",
             ".....~~~~~~~~~~~~~~~~~~~....~~");
-    private final static int[] playerSpawn = {15, 6};
-
-    private final static FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Puddle());
+    private static FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Puddle());
+    private static int[] playerSpawn = {15, 6};
 
     public Polymorphia(){
         super(groundFactory, mapString);
