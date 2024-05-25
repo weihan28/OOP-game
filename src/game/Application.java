@@ -1,7 +1,6 @@
 package game;
 
 import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 
 import game.displays.FancyMessage;
@@ -47,7 +46,7 @@ public class Application {
     private static World initialiseWorld() {
         World world = new World(new Display());
         Terminal terminal = CreateTerminal();
-        Moon[] moons = {initialisePolymorphia(terminal), initialiseParkingLot(terminal), initialiseRefactorio(terminal)};
+        Moon[] moons = {getPolymorphia(terminal), getParkingLot(terminal), getRefactorio(terminal)};
         for (Moon moon : moons){
             world.addGameMap(moon);
             terminal.addMoon(moon);
@@ -76,7 +75,7 @@ public class Application {
      * @param terminal the terminal used in the moon.
      * @return A fully initialised Polymorphia Game Map.
      */
-    private static Moon initialisePolymorphia(Terminal terminal){
+    private static Moon getPolymorphia(Terminal terminal){
         Moon gameMap = new Polymorphia();
         gameMap.at(15,5).setGround(terminal);
 
@@ -102,7 +101,7 @@ public class Application {
      * @param terminal the terminal used in the moon.
      * @return A fully initialised FactoryParkingLot Game Map.
      */
-    private static Moon initialiseParkingLot(Terminal terminal){
+    private static Moon getParkingLot(Terminal terminal){
         Moon gameMap = new FactoryParkingLot();
         gameMap.at(3,2).setGround(terminal);
 
@@ -114,7 +113,7 @@ public class Application {
      * @param terminal the terminal used in the moon.
      * @return A fully initialised Refactorio Game Map.
      */
-    private static Moon initialiseRefactorio(Terminal terminal){
+    private static Moon getRefactorio(Terminal terminal){
         Moon gameMap = new Refactorio();
         gameMap.at(15,5).setGround(terminal);
         return gameMap;
