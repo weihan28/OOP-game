@@ -28,17 +28,20 @@ public class Refactorio extends Moon {
             "....................~~........",
             ".............~~...............",
             "............~~~~..............");
-    /**
-     * Puddle is missing from ground factory, making the factory return nullPointerExceptiion
-     */
     private final static FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Puddle());
-    private final static int[] playerSpawn = {15, 6};
+    private static final int PLAYER_SPAWN_X = 15;
+    private static final int PLAYER_SPAWN_Y = 6;
 
     public Refactorio(){
         super(groundFactory, mapString);
     }
 
+    @Override
     public Location getPlayerSpawn(){
-        return this.at(playerSpawn[0], playerSpawn[1]);
+        return this.at(PLAYER_SPAWN_X,PLAYER_SPAWN_Y);
+    }
+    @Override
+    public String toString() {
+        return "Refactorio";
     }
 }

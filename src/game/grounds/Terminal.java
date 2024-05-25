@@ -35,11 +35,9 @@ public class Terminal extends Ground {
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = new ActionList();
-        // add all items to sell
         for (PurchasableFactory purchasableFactory: purchasableFactories) {
             actions.add(new PurchaseAction(purchasableFactory.createPurchasable()));
         }
-        // add all moons to travel to
         for (Moon moon: moons){
             if (location.map() != moon) {
                 actions.add(new TravelAction(moon));

@@ -1,7 +1,6 @@
 package game;
 
 import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 
@@ -13,7 +12,6 @@ import game.grounds.trees.SproutInheritree;
 import game.maps.*;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * The main class to start the game.
@@ -29,15 +27,6 @@ public class Application {
      * @param args not used in this case
      */
     public static void main(String[] args) {
-
-        World world = new World(new Display());
-
-        Moon[] moons = {new Polymorphia(), new FactoryParkingLot(), new Refactorio()};
-
-        for (GameMap moon : moons){
-            world.addGameMap(moon);
-        }
-
         for (String line : FancyMessage.TITLE.split("\n")) {
             new Display().println(line);
             try {
@@ -46,32 +35,26 @@ public class Application {
                 exception.printStackTrace();
             }
         }
+
+        World world = new World(new Display());
+        Moon[] moons = {new FactoryParkingLot(),new Polymorphia(), new Refactorio()};
+
+        for (GameMap moon : moons){
+            world.addGameMap(moon);
+        }
+
         Player player = new Player("Intern", '@', 4);
         world.addPlayer(player, moons[0].at(15, 6));
         player.addBalance(100);
-        Terminal terminal = initaliseTerminal(moons);
+        Terminal terminal = CreateTerminal(moons);
 
-        // separate initialisation of each moon's entities into functions for ease of comprehension
-        /**
-         * what happens if we accidentally put initialisePolymorphia(moon[1]),
-         * is moon[1] really Polymorphia?
-         * if someone deletes the moon in the middle, we would have to shift all indices backward.
-         *
-         * maybe encapsulate initilisation within creation of the moon Polymorphia.
-         *
-         * func createPolymorphia() returns Polymorphia Instance=> {
-         *      polymorphia = new Polymorphia()
-         *      initialisePolymorphia(polymorphia)
-         *      return polymorphia
-         * }
-         */
         initialisePolymorphia(moons[0], terminal);
         initialiseParkingLot(moons[1], terminal);
         initialiseRefactorio(moons[2], terminal);
         world.run();
     }
 
-    private static Terminal initaliseTerminal(Moon[] moons){
+    private static Terminal CreateTerminal(Moon[] moons){
         ArrayList<PurchasableFactory> purchasableFactories = new ArrayList<>();
         purchasableFactories.add(new EnergyDrinkFactory());
         purchasableFactories.add(new DragonSlayerSwordReplicaFactory());

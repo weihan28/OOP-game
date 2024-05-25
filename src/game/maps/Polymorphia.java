@@ -30,7 +30,8 @@ public class Polymorphia extends Moon {
             ".....~~~~~~~~~~~~~~~~........~",
             ".....~~~~~~~~~~~~~~~~~~~....~~");
     private static FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Puddle());
-    private static int[] playerSpawn = {15, 6};
+    private static final int PLAYER_SPAWN_X = 15;
+    private static final int PLAYER_SPAWN_Y = 6;
 
     public Polymorphia(){
         super(groundFactory, mapString);
@@ -38,7 +39,11 @@ public class Polymorphia extends Moon {
 
     @Override
     public Location getPlayerSpawn(){
-        return this.at(playerSpawn[0], playerSpawn[1]);
+        return this.at(PLAYER_SPAWN_X,PLAYER_SPAWN_Y);
     }
 
+    @Override
+    public String toString() {
+        return "Polymorphia";
+    }
 }

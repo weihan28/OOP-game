@@ -24,13 +24,20 @@ public class FactoryParkingLot extends Moon {
             ".......",
             ".......");
     private static FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor());
-    private static int[] playerSpawn = {3, 3};
+    private static final int PLAYER_SPAWN_X = 3;
+    private static final int PLAYER_SPAWN_Y = 3;
+
 
     public FactoryParkingLot(){
         super( groundFactory, mapString);
     }
 
+    @Override
     public Location getPlayerSpawn(){
-        return this.at(playerSpawn[0], playerSpawn[1]);
+        return this.at(PLAYER_SPAWN_X,PLAYER_SPAWN_Y);
+    }
+    @Override
+    public String toString() {
+        return "FactoryParkingLot";
     }
 }
