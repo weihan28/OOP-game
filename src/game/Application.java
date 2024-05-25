@@ -91,16 +91,14 @@ public class Application {
     }
 
     private static Moon initialiseParkingLot(Terminal terminal){
-        Moon gameMap = new Polymorphia();
+        Moon gameMap = new FactoryParkingLot();
         gameMap.at(3,2).setGround(terminal);
 
         return gameMap;
     }
 
     private static Moon initialiseRefactorio(Terminal terminal){
-        Moon gameMap = new Polymorphia();
-        terminal.addMoon(gameMap);
-
+        Moon gameMap = new Refactorio();
         gameMap.at(15,5).setGround(terminal);
         return gameMap;
     }
