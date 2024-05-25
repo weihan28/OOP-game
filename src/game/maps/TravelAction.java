@@ -16,7 +16,9 @@ public class TravelAction extends Action {
         return "Travelling to " + moon;
         // how will travel of multiple players work?
         /**
-         * multiple players is not currently supported with the current engine
+         * multiple players is not currently supported with the current engine,
+         * It still works if another player is to be added as an Actor,
+         * but they wont be able to see their map display.
          * https://imgur.com/a/gvD1Ko2
          * https://imgur.com/lXS1kmX
          *
