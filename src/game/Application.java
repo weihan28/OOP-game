@@ -40,6 +40,10 @@ public class Application {
         world.run();
     }
 
+    /**
+     * Initialises the World with all entities and grounds within.
+     * @return the World instance for the game.
+     */
     private static World initialiseWorld() {
         World world = new World(new Display());
         Terminal terminal = CreateTerminal();
@@ -55,6 +59,9 @@ public class Application {
         return world;
     }
 
+    /**
+     * Helper Function to Create a Terminal with items for sale.
+     */
     private static Terminal CreateTerminal(){
         ArrayList<PurchasableFactory> purchasableFactories = new ArrayList<>();
         purchasableFactories.add(new EnergyDrinkFactory());
@@ -65,9 +72,9 @@ public class Application {
     }
 
     /**
-     * Initialises the entities such as items and actors (excluding Player) onto Polymorphia.
-     *
-     * @param terminal the terminal to use in the map
+     * Creates and Initialises the Polymorphia Game Map.
+     * @param terminal the terminal used in the moon.
+     * @return A fully initialised Polymorphia Game Map.
      */
     private static Moon initialisePolymorphia(Terminal terminal){
         Moon gameMap = new Polymorphia();
@@ -90,6 +97,11 @@ public class Application {
         return gameMap;
     }
 
+    /**
+     * Creates and Initialises the FactoryParkingLot Game Map.
+     * @param terminal the terminal used in the moon.
+     * @return A fully initialised FactoryParkingLot Game Map.
+     */
     private static Moon initialiseParkingLot(Terminal terminal){
         Moon gameMap = new FactoryParkingLot();
         gameMap.at(3,2).setGround(terminal);
@@ -97,6 +109,11 @@ public class Application {
         return gameMap;
     }
 
+    /**
+     * Creates and Initialises the Refactorio Game Map.
+     * @param terminal the terminal used in the moon.
+     * @return A fully initialised Refactorio Game Map.
+     */
     private static Moon initialiseRefactorio(Terminal terminal){
         Moon gameMap = new Refactorio();
         gameMap.at(15,5).setGround(terminal);
