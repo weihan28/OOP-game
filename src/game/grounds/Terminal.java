@@ -17,12 +17,16 @@ import java.util.ArrayList;
 public class Terminal extends Ground {
 
     private final ArrayList<PurchasableFactory> purchasableFactories;
-    private Moon[] moons;
+    private final ArrayList<Moon> moons;
 
-    public Terminal(ArrayList<PurchasableFactory> purchasableFactories, Moon[] moons) {
+    public Terminal(ArrayList<PurchasableFactory> purchasableFactories) {
         super('=');
         this.purchasableFactories = purchasableFactories;
-        this.moons = moons;
+        this.moons = new ArrayList<>();
+    }
+
+    public void addMoon(Moon moon) {
+        this.moons.add(moon);
     }
 
     /**

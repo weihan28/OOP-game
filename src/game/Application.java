@@ -36,40 +36,41 @@ public class Application {
             }
         }
 
-        World world = new World(new Display());
-        Moon[] moons = {new Polymorphia(), new FactoryParkingLot(), new Refactorio()};
-
-        for (GameMap moon : moons){
-            world.addGameMap(moon);
-        }
-
-        Player player = new Player("Intern", '@', 4);
-        world.addPlayer(player, moons[0].at(15, 6));
-        player.addBalance(100);
-        Terminal terminal = CreateTerminal(moons);
-
-        initialisePolymorphia(moons[0], terminal);
-        initialiseParkingLot(moons[1], terminal);
-        initialiseRefactorio(moons[2], terminal);
+        World world = initialiseWorld();
         world.run();
     }
 
-    private static Terminal CreateTerminal(Moon[] moons){
+    private static World initialiseWorld() {
+        World world = new World(new Display());
+        Terminal terminal = CreateTerminal();
+        Moon[] moons = {initialisePolymorphia(terminal), initialiseParkingLot(terminal), initialiseRefactorio(terminal)};
+        for (Moon moon : moons){
+            world.addGameMap(moon);
+            terminal.addMoon(moon);
+        }
+
+        Player player = new Player("Intern", '@', 4);
+        world.addPlayer(player, moons[0].getPlayerSpawn());
+        player.addBalance(100);
+        return world;
+    }
+
+    private static Terminal CreateTerminal(){
         ArrayList<PurchasableFactory> purchasableFactories = new ArrayList<>();
         purchasableFactories.add(new EnergyDrinkFactory());
         purchasableFactories.add(new DragonSlayerSwordReplicaFactory());
         purchasableFactories.add(new ToiletPaperRollFactory());
         purchasableFactories.add(new AIDeviceFactory());
-        return new Terminal(purchasableFactories, moons);
+        return new Terminal(purchasableFactories);
     }
 
     /**
      * Initialises the entities such as items and actors (excluding Player) onto Polymorphia.
      *
-     * @param gameMap the map of the game containing the player.
      * @param terminal the terminal to use in the map
      */
-    private static void initialisePolymorphia(GameMap gameMap, Terminal terminal){
+    private static Moon initialisePolymorphia(Terminal terminal){
+        Moon gameMap = new Polymorphia();
         gameMap.at(15,5).setGround(terminal);
 
         gameMap.at(3, 1).setGround(new SproutInheritree());
@@ -86,14 +87,21 @@ public class Application {
 //
 //        gameMap.at(7, 9).addActor(new HuntsmanSpider());
 //        gameMap.at(15,10).addActor(new AlienBug());
+        return gameMap;
     }
 
-    private static void initialiseParkingLot(GameMap gameMap, Terminal terminal){
+    private static Moon initialiseParkingLot(Terminal terminal){
+        Moon gameMap = new Polymorphia();
         gameMap.at(3,2).setGround(terminal);
+
+        return gameMap;
     }
 
-    private static void initialiseRefactorio(GameMap gameMap, Terminal terminal){
-        gameMap.at(15,5).setGround(terminal);
+    private static Moon initialiseRefactorio(Terminal terminal){
+        Moon gameMap = new Polymorphia();
+        terminal.addMoon(gameMap);
 
+        gameMap.at(15,5).setGround(terminal);
+        return gameMap;
     }
 }
