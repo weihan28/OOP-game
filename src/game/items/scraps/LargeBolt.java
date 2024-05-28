@@ -21,6 +21,6 @@ public class LargeBolt extends Item implements Sellable {
 
     @Override
     public int getSellValue() {
-        return 25; // 25 credits for a Largebolt
+        return 25; // 25 credits for a Large bolt
     }
 }
