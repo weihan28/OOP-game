@@ -26,6 +26,7 @@ public class Application {
      * @param args not used in this case
      */
     public static void main(String[] args) {
+
         for (String line : FancyMessage.TITLE.split("\n")) {
             new Display().println(line);
             try {
@@ -66,6 +67,7 @@ public class Application {
         purchasableFactories.add(new EnergyDrinkFactory());
         purchasableFactories.add(new DragonSlayerSwordReplicaFactory());
         purchasableFactories.add(new ToiletPaperRollFactory());
+        purchasableFactories.add(new TheseusFactory());
         purchasableFactories.add(new AIDeviceFactory());
         return new Terminal(purchasableFactories);
     }
