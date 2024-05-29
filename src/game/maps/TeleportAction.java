@@ -12,6 +12,6 @@ public class TeleportAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return null;
+        return "Teleport with THESEUS";
     }
 }
