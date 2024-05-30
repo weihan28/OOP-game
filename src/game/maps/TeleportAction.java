@@ -18,12 +18,15 @@ public class TeleportAction extends Action {
 
         Location randomLocation = new Location(map, xCoordinate, yCoordinate);
 
+        if(!randomLocation.containsAnActor()){
+            map.moveActor(actor, randomLocation);
+            return String.format("%s has been teleported to coordinate %s", actor, randomLocation);
+        }
+        return "Teleport fails";
     }
 
     @Override
-    public String menuDescription(Actor actor) {
-        return "Teleport with THESEUS";
-    }
+    public String menuDescription(Actor actor) { return String.format("%s teleport with Theseus", actor); }
 }
 
 
