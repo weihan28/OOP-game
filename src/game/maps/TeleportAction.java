@@ -13,13 +13,10 @@ public class TeleportAction extends Action {
     public String execute(Actor actor, GameMap map) {
 
         Random random = new Random();
-        Location randomLocation;
-
         int xCoordinate = random.nextInt(map.getXRange().max() + 1);  // max() returns the upper limit (inclusive), need to add 1 for bound
         int yCoordinate = random.nextInt(map.getYRange().max() + 1);
 
-        randomLocation = new Location(map, xCoordinate, yCoordinate);
-
+        Location randomLocation = new Location(map, xCoordinate, yCoordinate);
 
     }
 
