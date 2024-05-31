@@ -1,8 +1,13 @@
 package game.items.scraps;
+import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.Location;
+import game.actors.Status;
+import game.items.actions.SellAction;
 import game.items.actions.Sellable;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Class representing a Metal Sheet scrap.
@@ -10,6 +15,7 @@ import java.util.Random;
 public class MetalSheet extends Item implements Sellable {
     public MetalSheet() {
         super("Metal sheet", '%', true);
+        this.addCapability(Status.SELLABLE);
     }
 
     @Override
@@ -17,7 +23,8 @@ public class MetalSheet extends Item implements Sellable {
         int discountRNG = new Random().nextInt(100);
         if (discountRNG < 60) {
             System.out.println("The vendor is asking for a 50% discount. He will buy" + this.toString() + "If you agree, type 'y'.");
-            String input = System.console().readLine();
+            Scanner discount = new Scanner(System.in);
+            String input = discount.nextLine();
             if (input.equals("y")) {
                 actor.removeItemFromInventory(this);
                 actor.addBalance(this.getSellValue() / 2);
@@ -33,7 +40,17 @@ public class MetalSheet extends Item implements Sellable {
     }
 
     @Override
+    public ActionList allowableActions(Actor otherActor, Location location){
+        ActionList actions = new ActionList();
+        if (otherActor.hasCapability(Status.VENDOR)) {
+            actions.add(new SellAction(this));
+        }
+        return actions;
+    }
+
+    @Override
     public int getSellValue() {
         return 20;
     }
+
 }

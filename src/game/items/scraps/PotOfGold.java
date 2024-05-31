@@ -3,8 +3,11 @@ package game.items.scraps;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.Location;
+import game.actors.Status;
 import game.items.actions.Consumable;
 import game.items.actions.ConsumeAction;
+import game.items.actions.SellAction;
 import game.items.actions.Sellable;
 
 /**
@@ -20,6 +23,7 @@ public class PotOfGold extends Item implements Consumable, Sellable {
     public PotOfGold() {
         super("Pot of Gold", '$', true);
         this.addBalanceAmount = 10;
+        this.addCapability(Status.SELLABLE);
     }
 
     /**
@@ -35,16 +39,25 @@ public class PotOfGold extends Item implements Consumable, Sellable {
     }
 
     /**
-     * Returns the list of allowable actions for the Item.
-     * @param owner the actor that owns the item
-     * @return
+     * List of allowable actions that the item allows its owner do to other actor.
+     *
+     * @see Item#allowableActions(Actor, Location)
+     * @param otherActor the other actor
+     * @param location the location of the other actor
+     * @return an unmodifiable list of Actions
      */
+
     @Override
-    public ActionList allowableActions(Actor owner) {
-        ActionList actions = super.allowableActions(owner);
+    public ActionList allowableActions(Actor otherActor, Location location){
+        ActionList actions = new ActionList();
         actions.add(new ConsumeAction(this));
+        if (otherActor.hasCapability(Status.VENDOR)) {
+            actions.add(new SellAction(this));
+        }
         return actions;
     }
+
+
 
     @Override
     public String SellFrom(Actor actor) {

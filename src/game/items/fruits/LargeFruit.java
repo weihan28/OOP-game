@@ -1,6 +1,7 @@
 package game.items.fruits;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import game.actors.Status;
 import game.items.actions.Sellable;
 
 /**
@@ -9,6 +10,7 @@ import game.items.actions.Sellable;
 public class LargeFruit extends Fruit implements Sellable {
     public LargeFruit() {
         super("Large Fruit", 'O', 2);
+        this.addCapability(Status.SELLABLE);
     }
 
     @Override

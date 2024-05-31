@@ -1,8 +1,14 @@
 package game.items.scraps;
 
+import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
+import game.actors.Status;
+import game.items.actions.ConsumeAction;
 import game.items.actions.Purchasable;
+import game.items.actions.SellAction;
 import game.items.actions.Sellable;
 
 import java.util.Random;
@@ -17,6 +23,7 @@ public class ToiletPaperRoll extends Item implements Purchasable, Sellable {
 
     public ToiletPaperRoll() {
         super("ToiletPaperRoll", 's', true);
+        this.addCapability(Status.SELLABLE);
     }
 
     /**
@@ -40,13 +47,22 @@ public class ToiletPaperRoll extends Item implements Purchasable, Sellable {
         int deathRNG = new java.util.Random().nextInt(100);
         if (deathRNG > 50) { // If you die
             actor.hurt(Integer.MAX_VALUE);
-            return "Failed to sell Toilet Paper Roll, and Killed in the process!";
+            return ("Failed to sell Toilet Paper Roll, and Killed in the process!");
         } else {
             actor.removeItemFromInventory(this);
             actor.addBalance(this.getSellValue());
             return "Successfully sold Toilet Paper Roll for " + this.getSellValue() + " credits.";
         }
 
+    }
+
+    @Override
+    public ActionList allowableActions(Actor otherActor, Location location){
+        ActionList actions = new ActionList();
+        if (otherActor.hasCapability(Status.VENDOR)) {
+            actions.add(new SellAction(this));
+        }
+        return actions;
     }
 
     @Override

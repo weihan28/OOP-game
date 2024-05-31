@@ -3,8 +3,11 @@ package game.items.scraps;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.Location;
+import game.actors.Status;
 import game.items.actions.Consumable;
 import game.items.actions.ConsumeAction;
+import game.items.actions.SellAction;
 import game.items.actions.Sellable;
 
 import java.util.Random;
@@ -28,6 +31,7 @@ public class JarOfPickles extends Item implements Consumable, Sellable {
         this.expireChance = 50;
         this.healAmount = 1;
         this.damageAmount = 1;
+        this.addCapability(Status.SELLABLE);
     }
 
     /**
@@ -56,15 +60,17 @@ public class JarOfPickles extends Item implements Consumable, Sellable {
     }
 
     @Override
-    public ActionList allowableActions(Actor owner) {
-        ActionList actions = super.allowableActions(owner);
+    public ActionList allowableActions(Actor otherActor, Location location){
+        ActionList actions = new ActionList();
         actions.add(new ConsumeAction(this));
+        if (otherActor.hasCapability(Status.VENDOR)) {
+            actions.add(new SellAction(this));
+        }
         return actions;
     }
 
     @Override
     public String SellFrom(Actor actor) {
-        //
         actor.removeItemFromInventory(this);
         int lucky_sell_RNG = rand.nextInt(100);
         if (lucky_sell_RNG > 50) {
