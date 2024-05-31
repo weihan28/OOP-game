@@ -26,7 +26,6 @@ public class Application {
      * @param args not used in this case
      */
     public static void main(String[] args) {
-
         for (String line : FancyMessage.TITLE.split("\n")) {
             new Display().println(line);
             try {
@@ -35,7 +34,6 @@ public class Application {
                 exception.printStackTrace();
             }
         }
-
         World world = initialiseWorld();
         world.run();
     }
@@ -47,15 +45,14 @@ public class Application {
     private static World initialiseWorld() {
         World world = new World(new Display());
         Terminal terminal = CreateTerminal();
-        Moon[] moons = {getPolymorphia(terminal), getParkingLot(terminal), getRefactorio(terminal)};
+        Moon[] moons = {getPolymorphia(terminal, world), getParkingLot(terminal, world), getRefactorio(terminal, world)};
         for (Moon moon : moons){
-            world.addGameMap(moon);
             terminal.addMoon(moon);
         }
 
         Player player = new Player("Intern", '@', 4);
-        world.addPlayer(player, moons[0].getPlayerSpawn());
         player.addBalance(100);
+        world.addPlayer(player, moons[0].getPlayerSpawn());
         return world;
     }
 
@@ -77,10 +74,38 @@ public class Application {
      * @param terminal the terminal used in the moon.
      * @return A fully initialised Polymorphia Game Map.
      */
-    private static Moon getPolymorphia(Terminal terminal){
+    private static Moon getPolymorphia(Terminal terminal, World world){
         Moon gameMap = new Polymorphia();
-        gameMap.at(15,5).setGround(terminal);
+        world.addGameMap(gameMap);
+        initPolymorphia(terminal, gameMap);
+        return gameMap;
+    }
+    /**
+     * Creates and Initialises the FactoryParkingLot Game Map.
+     * @param terminal the terminal used in the moon.
+     * @return A fully initialised FactoryParkingLot Game Map.
+     */
+    private static Moon getParkingLot(Terminal terminal, World world){
+        Moon gameMap = new FactoryParkingLot();
+        world.addGameMap(gameMap);
+        initParkingLot(terminal, gameMap);
+        return gameMap;
+    }
 
+    /**
+     * Creates and Initialises the Refactorio Game Map.
+     * @param terminal the terminal used in the moon.
+     * @return A fully initialised Refactorio Game Map.
+     */
+    private static Moon getRefactorio(Terminal terminal, World world){
+        Moon gameMap = new Refactorio();
+        world.addGameMap(gameMap);
+        initRefactorio(terminal, gameMap);
+        return gameMap;
+    }
+
+    private static void initPolymorphia(Terminal terminal, Moon gameMap) {
+        gameMap.at(15,5).setGround(terminal);
         gameMap.at(3, 1).setGround(new SproutInheritree());
 //        Spawner huntsmanSpiderSpawner = new ActorSpawner(new HuntsmanSpiderFactory(), 10);
 //        Spawner susAstroSpawner = new ActorSpawner(new SuspiciousAstronautFactory(), 5);
@@ -93,31 +118,15 @@ public class Application {
 //        gameMap.at(16,8).addItem(new JarOfPickles());
 //        gameMap.at(17,8).addItem(new PotOfGold());
 //
-//        gameMap.at(7, 9).addActor(new HuntsmanSpider());
+        gameMap.at(7, 9).addActor(new HuntsmanSpider());
 //        gameMap.at(15,10).addActor(new AlienBug());
-        return gameMap;
     }
 
-    /**
-     * Creates and Initialises the FactoryParkingLot Game Map.
-     * @param terminal the terminal used in the moon.
-     * @return A fully initialised FactoryParkingLot Game Map.
-     */
-    private static Moon getParkingLot(Terminal terminal){
-        Moon gameMap = new FactoryParkingLot();
+    private static void initParkingLot(Terminal terminal, Moon gameMap) {
         gameMap.at(3,2).setGround(terminal);
-
-        return gameMap;
     }
 
-    /**
-     * Creates and Initialises the Refactorio Game Map.
-     * @param terminal the terminal used in the moon.
-     * @return A fully initialised Refactorio Game Map.
-     */
-    private static Moon getRefactorio(Terminal terminal){
-        Moon gameMap = new Refactorio();
+    private static void initRefactorio(Terminal terminal, Moon gameMap) {
         gameMap.at(15,5).setGround(terminal);
-        return gameMap;
     }
 }
