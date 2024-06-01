@@ -132,5 +132,6 @@ public class Application {
 
     private static void initRefactorio(Terminal terminal, Moon gameMap) {
         gameMap.at(15,5).setGround(terminal);
+        gameMap.at(15, 10).setGround(new SproutInheritree());
     }
 }
