@@ -20,10 +20,7 @@ public class SellAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        // check sellable.hasenum isdefaultsold, if its true
-        // then return just remove item, add balance and return string
-        // if not, call the sellfrom method of the sellable item itself.
-        return String.format(sellable.SellFrom(actor, map));
+        return String.format(sellable.sellFrom(actor, map));
     }
 
     @Override

@@ -2,7 +2,6 @@ package game.items.fruits;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.actors.Status;
 import game.items.actions.Sellable;
 
 /**
@@ -14,10 +13,10 @@ public class LargeFruit extends Fruit implements Sellable {
     }
 
     @Override
-    public String SellFrom(Actor actor, GameMap map) {
+    public String sellFrom(Actor actor, GameMap map) {
         actor.removeItemFromInventory(this);
         actor.addBalance(this.getSellValue());
-        return "Successfully sold LargeFruit  for " + this.getSellValue() + " credits.";
+        return String.format("Successfully sold %s for %d credits.", this, getSellValue());
     }
 
     @Override

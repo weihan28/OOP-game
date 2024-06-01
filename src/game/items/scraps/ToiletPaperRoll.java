@@ -41,15 +41,16 @@ public class ToiletPaperRoll extends Item implements Purchasable, Sellable {
     }
 
     @Override
-    public String SellFrom(Actor actor, GameMap map) {
+    public String sellFrom(Actor actor, GameMap map) {
         String result;
         int deathChance = 50;
         int deathRNG = new Random().nextInt(100);
 
         if (deathRNG <= deathChance) {
             actor.hurt(Integer.MAX_VALUE);
-            result = String.format("Failed to sell %s, %s was killed in the process!", this, actor);
-            result += "\n" + actor.unconscious(map);
+            result =
+                String.format("Failed to sell %s, %s was killed in the process!\n", this, actor) +
+                actor.unconscious(map);
         } else {
             int soldValue = getSellValue();
             actor.removeItemFromInventory(this);

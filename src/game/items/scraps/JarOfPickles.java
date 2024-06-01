@@ -70,7 +70,7 @@ public class JarOfPickles extends Item implements Consumable, Sellable {
     }
 
     @Override
-    public String SellFrom(Actor actor, GameMap map) {
+    public String sellFrom(Actor actor, GameMap map) {
         actor.removeItemFromInventory(this);
         int lucky_sell_RNG = rand.nextInt(100);
         if (lucky_sell_RNG > 50) {

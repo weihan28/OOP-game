@@ -38,6 +38,28 @@ public class PotOfGold extends Item implements Consumable, Sellable {
         return String.format("gains %d credits. The rest are held as tax by the factory", addBalanceAmount);
     }
 
+    @Override
+    public String sellFrom(Actor actor, GameMap map) {
+        String result;
+        int moneyTakenChance = 25;
+        int moneyRNG = new java.util.Random().nextInt(100);
+
+        if (moneyRNG < moneyTakenChance) {
+            result =  String.format("Failed to sell %s, Item taken but no money was given!", this);
+        } else {
+            int sellValue = getSellValue();
+            actor.addBalance(sellValue);
+            result =  String.format("Successfully sold %s for %d credits.", this, sellValue);
+        }
+        actor.removeItemFromInventory(this);
+        return result;
+    }
+
+    @Override
+    public int getSellValue() {
+        return 500;
+    }
+
     /**
      * List of allowable actions that the item allows its owner do to other actor.
      *
@@ -55,24 +77,5 @@ public class PotOfGold extends Item implements Consumable, Sellable {
             actions.add(new SellAction(this));
         }
         return actions;
-    }
-
-
-
-    @Override
-    public String SellFrom(Actor actor, GameMap map) {
-        actor.removeItemFromInventory(this);
-        int rand_change = new java.util.Random().nextInt(100);
-        if (rand_change < 25) {
-            return "Failed to sell Pot of Gold, Item taken but no money was given!";
-        } else {
-            actor.addBalance(this.getSellValue());
-            return "Successfully sold Pot of Gold for " + this.getSellValue() + " credits.";
-        }
-    }
-
-    @Override
-    public int getSellValue() {
-        return 500;
     }
 }

@@ -18,6 +18,13 @@ public class MetalPipe extends WeaponItem implements Sellable {
         super("Metal Pipe", '!', 1, "hits", 20);
     }
 
+    @Override
+    public String sellFrom(Actor actor, GameMap map) {
+        actor.removeItemFromInventory(this);
+        actor.addBalance(getSellValue());
+        return String.format("Successfully sold %s for %d credits.", this, getSellValue());
+    }
+
     /**
      * List of allowable actions that the item allows its owner do to other actor.
      *
@@ -39,17 +46,7 @@ public class MetalPipe extends WeaponItem implements Sellable {
     }
 
     @Override
-    public String SellFrom(Actor actor, GameMap map) {
-        actor.removeItemFromInventory(this);
-        actor.addBalance(getSellValue());
-        return String.format("Successfully sold %s for %d credits.", this, getSellValue());
-    }
-
-    @Override
     public int getSellValue() {
         return 35;
     }
-
-
-
 }

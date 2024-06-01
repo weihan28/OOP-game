@@ -9,7 +9,6 @@ import game.actors.Status;
 import game.items.actions.SellAction;
 import game.items.actions.Sellable;
 import java.util.Random;
-import java.util.Scanner;
 
 /**
  * Class representing a Metal Sheet scrap.
@@ -20,14 +19,13 @@ public class MetalSheet extends Item implements Sellable {
     }
 
     @Override
-    public String SellFrom(Actor actor, GameMap map) {
+    public String sellFrom(Actor actor, GameMap map) {
         int discountChance = 50;
         int discountRNG = new Random().nextInt(100);
         int sellValue = getSellValue();
 
         if (discountRNG < discountChance) {
-            final char decision = getDecisionForDiscount(discountChance);
-            if (decision == 'y') {
+            if (getDecisionForDiscount(discountChance) == 'y') {
                 sellValue = (int) (sellValue * discountChance / 100);
             } else {
                 return String.format("The vendor did not buy the %s.", this);
@@ -60,5 +58,4 @@ public class MetalSheet extends Item implements Sellable {
     public int getSellValue() {
         return 20;
     }
-
 }
