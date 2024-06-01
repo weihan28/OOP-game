@@ -6,13 +6,7 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.actors.actions.AttackAction;
-import game.behaviours.WanderBehaviour;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -21,7 +15,6 @@ public abstract class NPC extends Actor{
 
     public NPC(String name, char displayChar, int hitpoints) {
         super(name, displayChar, hitpoints);
-        // abstract behaviours into individual children classes
     }
     /**
      * At each turn, select a valid action to perform.

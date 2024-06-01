@@ -1,6 +1,7 @@
 package game.items.actions;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.GameMap;
 
 /**
  * An interface for purchasable objects.
@@ -8,10 +9,12 @@ import edu.monash.fit2099.engine.actors.Actor;
 public interface Sellable {
     /**
      * Called when an actor sells the object.
+     *
      * @param actor The actor that is selling the object.
+     * @param map
      * @return The description of the selling outcome.
      */
-    public String SellFrom(Actor actor);
+    public String SellFrom(Actor actor, GameMap map);
 
     /**
      * Get the value that will be given to the user if they sell the item

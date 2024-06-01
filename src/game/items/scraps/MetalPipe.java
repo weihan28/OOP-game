@@ -2,6 +2,7 @@ package game.items.scraps;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actors.Status;
@@ -37,7 +38,7 @@ public class MetalPipe extends WeaponItem implements Sellable {
     }
 
     @Override
-    public String SellFrom(Actor actor) {
+    public String SellFrom(Actor actor, GameMap map) {
         actor.removeItemFromInventory(this);
         actor.addBalance(this.getSellValue());
         return "Successfully sold Metal Pipe for " + this.getSellValue() + " credits.";

@@ -28,7 +28,7 @@ public class DragonSlayerSwordReplica extends WeaponItem implements Purchasable 
             actor.addItemToInventory(this);
             return String.format("%s successfully purchased %s", actor, this);
         } else {
-            return String.format("%d credits are taken from %s, but %s doesn't receive anything in return!", actor, actor);
+            return String.format("%d credits are taken from %s, but %s doesn't receive anything in return!",getCost(), actor, actor);
         }
     }
 

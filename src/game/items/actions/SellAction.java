@@ -23,7 +23,7 @@ public class SellAction extends Action {
         // check sellable.hasenum isdefaultsold, if its true
         // then return just remove item, add balance and return string
         // if not, call the sellfrom method of the sellable item itself.
-        return String.format(sellable.SellFrom(actor));
+        return String.format(sellable.SellFrom(actor, map));
     }
 
     @Override

@@ -6,7 +6,6 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.Status;
-import game.items.actions.ConsumeAction;
 import game.items.actions.Purchasable;
 import game.items.actions.SellAction;
 import game.items.actions.Sellable;
@@ -43,17 +42,21 @@ public class ToiletPaperRoll extends Item implements Purchasable, Sellable {
     }
 
     @Override
-    public String SellFrom(Actor actor) {
-        int deathRNG = new java.util.Random().nextInt(100);
-        if (deathRNG > 50) { // If you die
+    public String SellFrom(Actor actor, GameMap map) {
+        String result;
+        int deathRNG = new Random().nextInt(100);
+        if (deathRNG > 50) {
             actor.hurt(Integer.MAX_VALUE);
-            return ("Failed to sell Toilet Paper Roll, and Killed in the process!");
-        } else {
-            actor.removeItemFromInventory(this);
-            actor.addBalance(this.getSellValue());
-            return "Successfully sold Toilet Paper Roll for " + this.getSellValue() + " credits.";
-        }
+            result = String.format("Failed to sell %s, %s was killed in the process!", this, actor);
+            result += "\n" + actor.unconscious(map);
 
+        } else {
+            int soldValue = getSellValue();
+            actor.removeItemFromInventory(this);
+            actor.addBalance(soldValue);
+            result = String.format("%s successfully sold %s for %d credits", actor, this, soldValue);
+        }
+        return result;
     }
 
     @Override

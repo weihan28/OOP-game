@@ -3,6 +3,7 @@ package game.items.scraps;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.Status;
 import game.items.actions.Consumable;
@@ -60,7 +61,7 @@ public class PotOfGold extends Item implements Consumable, Sellable {
 
 
     @Override
-    public String SellFrom(Actor actor) {
+    public String SellFrom(Actor actor, GameMap map) {
         actor.removeItemFromInventory(this);
         int rand_change = new java.util.Random().nextInt(100);
         if (rand_change < 25) {

@@ -2,10 +2,9 @@ package game.items.scraps;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.Status;
-import game.actors.actions.AttackAction;
-import game.items.actions.ConsumeAction;
 import game.items.actions.SellAction;
 import game.items.actions.Sellable;
 
@@ -20,7 +19,7 @@ public class LargeBolt extends Item implements Sellable {
 
 
     @Override
-    public String SellFrom(Actor actor) {
+    public String SellFrom(Actor actor, GameMap map) {
         actor.removeItemFromInventory(this);
         actor.addBalance(this.getSellValue());
         return "Successfully sold Large Bolt for " + this.getSellValue() + " credits.";
@@ -37,6 +36,6 @@ public class LargeBolt extends Item implements Sellable {
 
     @Override
     public int getSellValue() {
-        return 25; // 25 credits for a Large bolt
+        return 25;
     }
 }

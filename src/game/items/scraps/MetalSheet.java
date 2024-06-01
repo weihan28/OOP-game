@@ -2,6 +2,7 @@ package game.items.scraps;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.Status;
 import game.items.actions.SellAction;
@@ -19,7 +20,7 @@ public class MetalSheet extends Item implements Sellable {
     }
 
     @Override
-    public String SellFrom(Actor actor) {
+    public String SellFrom(Actor actor, GameMap map) {
         int discountRNG = new Random().nextInt(100);
         if (discountRNG < 60) {
             System.out.println("The vendor is asking for a 50% discount. He will buy" + this.toString() + "If you agree, type 'y'.");
