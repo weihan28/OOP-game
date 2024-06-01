@@ -6,6 +6,8 @@ import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.factories.PurchasableFactory;
 import game.items.actions.PurchaseAction;
+import game.maps.Moon;
+import game.maps.TravelAction;
 
 import java.util.ArrayList;
 
@@ -15,10 +17,16 @@ import java.util.ArrayList;
 public class Terminal extends Ground {
 
     private final ArrayList<PurchasableFactory> purchasableFactories;
+    private final ArrayList<Moon> moons;
 
     public Terminal(ArrayList<PurchasableFactory> purchasableFactories) {
         super('=');
         this.purchasableFactories = purchasableFactories;
+        this.moons = new ArrayList<>();
+    }
+
+    public void addMoon(Moon moon) {
+        this.moons.add(moon);
     }
 
     /**
@@ -33,6 +41,11 @@ public class Terminal extends Ground {
         ActionList actions = new ActionList();
         for (PurchasableFactory purchasableFactory: purchasableFactories) {
             actions.add(new PurchaseAction(purchasableFactory.createPurchasable()));
+        }
+        for (Moon moon: moons){
+            if (location.map() != moon) {
+                actions.add(new TravelAction(moon));
+            }
         }
         return actions;
     }
