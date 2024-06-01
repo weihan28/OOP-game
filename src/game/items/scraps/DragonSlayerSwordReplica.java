@@ -15,16 +15,18 @@ import java.util.Random;
  */
 public class DragonSlayerSwordReplica extends WeaponItem implements Purchasable {
     private final Random random = new Random();
-    private final int cost = 100;
-    private final int purchaseChance = 50;
+    private final int cost;
 
     public DragonSlayerSwordReplica() {
         super("DragonSlayerSwordReplica", 'x', 50, "slashes", 75);
+        cost = 100;
     }
 
     @Override
     public String purchaseBy(Actor actor) {
-        if (random.nextInt(100) <= purchaseChance) {
+        int purchaseRNG = random.nextInt(100);
+        int purchaseChance = 50;
+        if (purchaseRNG <= purchaseChance) {
             actor.addItemToInventory(this);
             return String.format("%s successfully purchased %s", actor, this);
         } else {
@@ -39,8 +41,9 @@ public class DragonSlayerSwordReplica extends WeaponItem implements Purchasable 
 
     public ActionList allowableActions(Actor otherActor, Location location){
         ActionList actions = new ActionList();
-        if (otherActor.hasCapability(Status.HOSTILE_TO_PLAYER)) {actions.add(new AttackAction(otherActor, location.toString(), this));}
-
+        if (otherActor.hasCapability(Status.HOSTILE_TO_PLAYER)) {
+            actions.add(new AttackAction(otherActor, location.toString(), this));
+        }
         return actions;
     }
 }

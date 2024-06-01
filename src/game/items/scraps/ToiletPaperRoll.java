@@ -16,12 +16,15 @@ import java.util.Random;
  */
 public class ToiletPaperRoll extends Item implements Purchasable, Sellable {
     private final Random random = new Random();
-    private final int cost = 5;
-    private final int discountCost = 1;
-    private final int chanceDiscount = 75;
+    private final int cost;
+    private final int discountCost;
+    private final int chanceDiscount;
 
     public ToiletPaperRoll() {
         super("ToiletPaperRoll", 's', true);
+        cost = 5;
+        discountCost = 1;
+        chanceDiscount = 75;
     }
 
     /**

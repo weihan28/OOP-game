@@ -72,8 +72,9 @@ public class JarOfPickles extends Item implements Consumable, Sellable {
     @Override
     public String sellFrom(Actor actor, GameMap map) {
         actor.removeItemFromInventory(this);
-        int lucky_sell_RNG = rand.nextInt(100);
-        if (lucky_sell_RNG > 50) {
+        int luckySellChance = 50;
+        int luckySellRNG = rand.nextInt(100);
+        if (luckySellRNG > luckySellChance) {
             actor.addBalance(2 * this.getSellValue());
             return "Successfully sold Jar of Pickles for " + 2  * this.getSellValue() + " credits instead of " + this.getSellValue() + " credits.";
         } else {

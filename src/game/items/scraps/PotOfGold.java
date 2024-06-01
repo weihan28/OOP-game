@@ -68,7 +68,6 @@ public class PotOfGold extends Item implements Consumable, Sellable {
      * @param location the location of the other actor
      * @return an unmodifiable list of Actions
      */
-
     @Override
     public ActionList allowableActions(Actor otherActor, Location location){
         ActionList actions = new ActionList();
