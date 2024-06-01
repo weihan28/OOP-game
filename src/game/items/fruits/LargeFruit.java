@@ -17,7 +17,7 @@ public class LargeFruit extends Fruit implements Sellable {
     }
 
     @Override
-    public String sellFrom(Actor actor, GameMap map) {
+    public String sellFrom(Actor actor, GameMap map, Actor buyer) {
         actor.removeItemFromInventory(this);
         actor.addBalance(this.getSellValue());
         return String.format("Successfully sold %s for %d credits.", this, getSellValue());
@@ -32,7 +32,7 @@ public class LargeFruit extends Fruit implements Sellable {
     public ActionList allowableActions(Actor otherActor, Location location){
         ActionList actions = super.allowableActions(otherActor);
         if (otherActor.hasCapability(Status.SELLABLE_TOWARDS)) {
-            actions.add(new SellAction(this));
+            actions.add(new SellAction(this, otherActor));
         }
         return actions;
     }

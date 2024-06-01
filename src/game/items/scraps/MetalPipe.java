@@ -19,7 +19,7 @@ public class MetalPipe extends WeaponItem implements Sellable {
     }
 
     @Override
-    public String sellFrom(Actor actor, GameMap map) {
+    public String sellFrom(Actor actor, GameMap map, Actor buyer) {
         actor.removeItemFromInventory(this);
         actor.addBalance(getSellValue());
         return String.format("Successfully sold %s for %d credits.", this, getSellValue());
@@ -40,7 +40,7 @@ public class MetalPipe extends WeaponItem implements Sellable {
             actions.add(new AttackAction(otherActor, location.toString(), this));
         }
         if (otherActor.hasCapability(Status.SELLABLE_TOWARDS)) {
-            actions.add(new SellAction(this));
+            actions.add(new SellAction(this, otherActor));
         }
         return actions;
     }

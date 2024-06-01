@@ -19,7 +19,7 @@ public class MetalSheet extends Item implements Sellable {
     }
 
     @Override
-    public String sellFrom(Actor actor, GameMap map) {
+    public String sellFrom(Actor actor, GameMap map, Actor buyer) {
         int discountChance = 50;
         int discountRNG = new Random().nextInt(100);
         int sellValue = getSellValue();
@@ -49,7 +49,7 @@ public class MetalSheet extends Item implements Sellable {
     public ActionList allowableActions(Actor otherActor, Location location){
         ActionList actions = new ActionList();
         if (otherActor.hasCapability(Status.SELLABLE_TOWARDS)) {
-            actions.add(new SellAction(this));
+            actions.add(new SellAction(this, otherActor));
         }
         return actions;
     }

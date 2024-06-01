@@ -39,7 +39,7 @@ public class PotOfGold extends Item implements Consumable, Sellable {
     }
 
     @Override
-    public String sellFrom(Actor actor, GameMap map) {
+    public String sellFrom(Actor actor, GameMap map, Actor buyer) {
         String result;
         int moneyTakenChance = 25;
         int moneyRNG = new java.util.Random().nextInt(100);
@@ -73,7 +73,7 @@ public class PotOfGold extends Item implements Consumable, Sellable {
         ActionList actions = new ActionList();
         actions.add(new ConsumeAction(this));
         if (otherActor.hasCapability(Status.SELLABLE_TOWARDS)) {
-            actions.add(new SellAction(this));
+            actions.add(new SellAction(this, otherActor));
         }
         return actions;
     }

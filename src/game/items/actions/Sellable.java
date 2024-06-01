@@ -12,9 +12,10 @@ public interface Sellable {
      *
      * @param actor The actor that is selling the object.
      * @param map
+     * @param buyer
      * @return The description of the selling outcome.
      */
-    public String sellFrom(Actor actor, GameMap map);
+    public String sellFrom(Actor actor, GameMap map, Actor buyer);
 
     /**
      * Get the value that will be given to the user if they sell the item

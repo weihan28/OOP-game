@@ -9,18 +9,22 @@ import edu.monash.fit2099.engine.positions.GameMap;
  */
 public class SellAction extends Action {
     private final Sellable sellable;
+    private final Actor buyer;
 
     /**
      * Constructor of a sell action.
+     *
      * @param sellable
+     * @param buyer
      */
-    public SellAction(Sellable sellable) {
+    public SellAction(Sellable sellable, Actor buyer) {
         this.sellable = sellable;
+        this.buyer = buyer;
     }
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        return String.format(sellable.sellFrom(actor, map));
+        return String.format(sellable.sellFrom(actor, map, buyer));
     }
 
     @Override

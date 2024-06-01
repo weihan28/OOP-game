@@ -64,13 +64,13 @@ public class JarOfPickles extends Item implements Consumable, Sellable {
         ActionList actions = new ActionList();
         actions.add(new ConsumeAction(this));
         if (otherActor.hasCapability(Status.SELLABLE_TOWARDS)) {
-            actions.add(new SellAction(this));
+            actions.add(new SellAction(this, otherActor));
         }
         return actions;
     }
 
     @Override
-    public String sellFrom(Actor actor, GameMap map) {
+    public String sellFrom(Actor actor, GameMap map, Actor buyer) {
         actor.removeItemFromInventory(this);
         int luckySellChance = 50;
         int luckySellRNG = rand.nextInt(100);
