@@ -24,7 +24,6 @@ public class PotOfGold extends Item implements Consumable, Sellable {
     public PotOfGold() {
         super("Pot of Gold", '$', true);
         this.addBalanceAmount = 10;
-        this.addCapability(Status.SELLABLE);
     }
 
     /**
@@ -52,7 +51,7 @@ public class PotOfGold extends Item implements Consumable, Sellable {
     public ActionList allowableActions(Actor otherActor, Location location){
         ActionList actions = new ActionList();
         actions.add(new ConsumeAction(this));
-        if (otherActor.hasCapability(Status.VENDOR)) {
+        if (otherActor.hasCapability(Status.SELLABLE_TOWARDS)) {
             actions.add(new SellAction(this));
         }
         return actions;

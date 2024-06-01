@@ -14,7 +14,6 @@ import game.items.actions.Sellable;
 public class LargeBolt extends Item implements Sellable {
     public LargeBolt() {
         super("Large bolt", '+', true);
-        this.addCapability(Status.SELLABLE);
     }
 
 
@@ -28,7 +27,7 @@ public class LargeBolt extends Item implements Sellable {
     @Override
     public ActionList allowableActions(Actor otherActor, Location location){
         ActionList actions = new ActionList();
-        if (otherActor.hasCapability(Status.VENDOR)) {
+        if (otherActor.hasCapability(Status.SELLABLE_TOWARDS)) {
             actions.add(new SellAction(this));
         }
         return actions;

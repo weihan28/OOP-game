@@ -107,6 +107,7 @@ public class Application {
     private static void initPolymorphia(Terminal terminal, Moon gameMap) {
         gameMap.at(15,5).setGround(terminal);
         gameMap.at(3, 1).setGround(new SproutInheritree());
+        gameMap.at(15, 9).addActor(new HumanoidFigure());
 //        Spawner huntsmanSpiderSpawner = new ActorSpawner(new HuntsmanSpiderFactory(), 10);
 //        Spawner susAstroSpawner = new ActorSpawner(new SuspiciousAstronautFactory(), 5);
 //        gameMap.at(20, 10).setGround(new Crater(huntsmanSpiderSpawner));

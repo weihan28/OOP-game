@@ -11,7 +11,6 @@ import game.items.actions.Sellable;
 public class LargeFruit extends Fruit implements Sellable {
     public LargeFruit() {
         super("Large Fruit", 'O', 2);
-        this.addCapability(Status.SELLABLE);
     }
 
     @Override

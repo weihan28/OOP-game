@@ -11,6 +11,5 @@ public enum Status {
     HOSTILE_TO_PLAYER,
     CAN_ENTER_FLOOR,
     FOLLOWABLE_BY_ALIEN,
-    SELLABLE,
-    VENDOR,
+    SELLABLE_TOWARDS
 }

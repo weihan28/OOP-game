@@ -32,7 +32,6 @@ public class JarOfPickles extends Item implements Consumable, Sellable {
         this.expireChance = 50;
         this.healAmount = 1;
         this.damageAmount = 1;
-        this.addCapability(Status.SELLABLE);
     }
 
     /**
@@ -64,7 +63,7 @@ public class JarOfPickles extends Item implements Consumable, Sellable {
     public ActionList allowableActions(Actor otherActor, Location location){
         ActionList actions = new ActionList();
         actions.add(new ConsumeAction(this));
-        if (otherActor.hasCapability(Status.VENDOR)) {
+        if (otherActor.hasCapability(Status.SELLABLE_TOWARDS)) {
             actions.add(new SellAction(this));
         }
         return actions;

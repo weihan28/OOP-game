@@ -16,7 +16,6 @@ import java.util.Scanner;
 public class MetalSheet extends Item implements Sellable {
     public MetalSheet() {
         super("Metal sheet", '%', true);
-        this.addCapability(Status.SELLABLE);
     }
 
     @Override
@@ -43,7 +42,7 @@ public class MetalSheet extends Item implements Sellable {
     @Override
     public ActionList allowableActions(Actor otherActor, Location location){
         ActionList actions = new ActionList();
-        if (otherActor.hasCapability(Status.VENDOR)) {
+        if (otherActor.hasCapability(Status.SELLABLE_TOWARDS)) {
             actions.add(new SellAction(this));
         }
         return actions;

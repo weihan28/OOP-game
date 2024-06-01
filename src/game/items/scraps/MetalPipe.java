@@ -16,7 +16,6 @@ import game.items.actions.Sellable;
 public class MetalPipe extends WeaponItem implements Sellable {
     public MetalPipe() {
         super("Metal Pipe", '!', 1, "hits", 20);
-        this.addCapability(Status.SELLABLE);
     }
 
     /**
@@ -31,7 +30,7 @@ public class MetalPipe extends WeaponItem implements Sellable {
     public ActionList allowableActions(Actor otherActor, Location location){
         ActionList actions = new ActionList();
         if (otherActor.hasCapability(Status.HOSTILE_TO_PLAYER)) {actions.add(new AttackAction(otherActor, location.toString(), this));}
-        if (otherActor.hasCapability(Status.VENDOR)) {
+        if (otherActor.hasCapability(Status.SELLABLE_TOWARDS)) {
             actions.add(new SellAction(this));
         }
         return actions;
