@@ -13,12 +13,12 @@ import java.util.Random;
  * A class that represents a Energy Drink in the game.
  */
 public class EnergyDrink extends Item implements Consumable, Purchasable {
-    protected final int cost = 10;
-    private final int healAmount = 1;
+    protected final int cost;
     private final Random random = new Random();
 
     public EnergyDrink() {
         super("Energy Drink", '*', true);
+        cost = 10;
     }
 
     /**
@@ -28,9 +28,10 @@ public class EnergyDrink extends Item implements Consumable, Purchasable {
      */
     @Override
     public String consumedBy(Actor actor) {
+        int healAmount = 1;
         actor.heal(healAmount);
         actor.removeItemFromInventory(this);
-        return String.format("%s heals %s by %d", this, actor,healAmount);
+        return String.format("%s heals %s by %d", this, actor, healAmount);
     }
 
     /**

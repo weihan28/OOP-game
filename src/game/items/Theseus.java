@@ -9,9 +9,12 @@ import game.maps.TeleportAction;
 
 public class Theseus extends Item implements Purchasable {
 
-    private final int cost = 100;
+    private final int cost;
 
-    public Theseus(){ super("Theseus", '^', true); }
+    public Theseus(){
+        super("Theseus", '^', true);
+        cost = 100;
+    }
 
 
 

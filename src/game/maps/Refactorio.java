@@ -28,12 +28,12 @@ public class Refactorio extends Moon {
             "....................~~........",
             ".............~~...............",
             "............~~~~..............");
-    private final static FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Puddle());
+    private final static FancyGroundFactory GROUND_FACTORY = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Puddle());
     private static final int PLAYER_SPAWN_X = 15;
     private static final int PLAYER_SPAWN_Y = 6;
 
     public Refactorio(){
-        super(groundFactory, mapString);
+        super(GROUND_FACTORY, mapString);
     }
 
     @Override

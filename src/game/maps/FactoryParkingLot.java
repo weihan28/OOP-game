@@ -1,11 +1,9 @@
 package game.maps;
 
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
-import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.grounds.Dirt;
 import game.grounds.Floor;
-import game.grounds.Puddle;
 import game.grounds.Wall;
 
 import java.util.Arrays;
@@ -23,13 +21,13 @@ public class FactoryParkingLot extends Moon {
             ".......",
             ".......",
             ".......");
-    private static FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor());
+    private static final FancyGroundFactory GROUND_FACTORY = new FancyGroundFactory(new Dirt(), new Wall(), new Floor());
     private static final int PLAYER_SPAWN_X = 3;
     private static final int PLAYER_SPAWN_Y = 3;
 
 
     public FactoryParkingLot(){
-        super( groundFactory, mapString);
+        super(GROUND_FACTORY, mapString);
     }
 
     @Override
