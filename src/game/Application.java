@@ -8,13 +8,7 @@ import game.actors.*;
 import game.factories.*;
 import game.grounds.*;
 import game.grounds.trees.SproutInheritree;
-import game.items.fruits.LargeFruit;
-import game.items.scraps.JarOfPickles;
-import game.items.scraps.LargeBolt;
-import game.items.scraps.MetalPipe;
 import game.items.scraps.MetalSheet;
-import game.items.scraps.PotOfGold;
-import game.items.scraps.ToiletPaperRoll;
 import game.maps.*;
 
 import java.util.ArrayList;
@@ -59,17 +53,7 @@ public class Application {
 
         Player player = new Player("Intern", '@', 4);
         player.addBalance(100);
-
-        // testing for REQ2
-        player.addItemToInventory(new LargeBolt());
-        player.addItemToInventory(new MetalSheet());
-        player.addItemToInventory(new LargeFruit());
-        player.addItemToInventory(new JarOfPickles());
-        player.addItemToInventory(new MetalPipe());
-        player.addItemToInventory(new PotOfGold());
-        player.addItemToInventory(new ToiletPaperRoll());
-
-        world.addPlayer(player, moons[1].getPlayerSpawn());
+        world.addPlayer(player, moons[0].getPlayerSpawn());
         return world;
     }
 
