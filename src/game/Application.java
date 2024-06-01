@@ -8,6 +8,7 @@ import game.actors.*;
 import game.factories.*;
 import game.grounds.*;
 import game.grounds.trees.SproutInheritree;
+import game.items.scraps.MetalSheet;
 import game.maps.*;
 
 import java.util.ArrayList;
@@ -108,6 +109,7 @@ public class Application {
         gameMap.at(15,5).setGround(terminal);
         gameMap.at(3, 1).setGround(new SproutInheritree());
         gameMap.at(15, 9).addActor(new HumanoidFigure());
+        gameMap.at(15,8).addItem(new MetalSheet());
 //        Spawner huntsmanSpiderSpawner = new ActorSpawner(new HuntsmanSpiderFactory(), 10);
 //        Spawner susAstroSpawner = new ActorSpawner(new SuspiciousAstronautFactory(), 5);
 //        gameMap.at(20, 10).setGround(new Crater(huntsmanSpiderSpawner));

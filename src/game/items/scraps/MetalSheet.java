@@ -1,6 +1,7 @@
 package game.items.scraps;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
@@ -20,23 +21,30 @@ public class MetalSheet extends Item implements Sellable {
 
     @Override
     public String SellFrom(Actor actor, GameMap map) {
+        int discountChance = 50;
         int discountRNG = new Random().nextInt(100);
-        if (discountRNG < 60) {
-            System.out.println("The vendor is asking for a 50% discount. He will buy" + this.toString() + "If you agree, type 'y'.");
-            Scanner discount = new Scanner(System.in);
-            String input = discount.nextLine();
-            if (input.equals("y")) {
-                actor.removeItemFromInventory(this);
-                actor.addBalance(this.getSellValue() / 2);
-                return "Successfully sold MetalSheet for " + this.getSellValue() / 2 + " credits.";
+        int sellValue = getSellValue();
+
+        if (discountRNG < discountChance) {
+            final char decision = getDecisionForDiscount(discountChance);
+            if (decision == 'y') {
+                sellValue = (int) (sellValue * discountChance / 100);
             } else {
-                return "The vendor did not buy the MetalSheet.";
+                return String.format("The vendor did not buy the %s.", this);
             }
-        } else {
-            actor.removeItemFromInventory(this);
-            actor.addBalance(this.getSellValue());
-            return "Successfully sold MetalSheet for " + this.getSellValue() + " credits.";
         }
+        actor.removeItemFromInventory(this);
+        actor.addBalance(sellValue);
+        return String.format("Successfully sold %s for %d credits", this, sellValue);
+    }
+
+    private char getDecisionForDiscount(int discountChance) {
+        Display display = new Display();
+        String askForDiscount =
+                String.format("The vendor is asking for a %d%% discount. \n", discountChance) +
+                String.format("He will buy %s if you agree, type 'y', type anything else to refuse", this);
+        display.println(askForDiscount);
+        return display.readChar();
     }
 
     @Override

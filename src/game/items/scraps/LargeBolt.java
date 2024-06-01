@@ -21,7 +21,7 @@ public class LargeBolt extends Item implements Sellable {
     public String SellFrom(Actor actor, GameMap map) {
         actor.removeItemFromInventory(this);
         actor.addBalance(this.getSellValue());
-        return "Successfully sold Large Bolt for " + this.getSellValue() + " credits.";
+        return String.format("Successfully sold %s for %d credits.", this, getSellValue());
     }
 
     @Override
