@@ -1,4 +1,4 @@
-package game.items;
+package game.items.scraps;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
