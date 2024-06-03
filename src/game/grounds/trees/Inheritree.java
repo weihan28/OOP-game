@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * A abstract class representing the inheritree.
+ * A abstract class representing the Inheritree.
  */
 public abstract class Inheritree extends Ground{
     protected Map<Integer, GroundBehaviour> behaviours = new TreeMap<>();

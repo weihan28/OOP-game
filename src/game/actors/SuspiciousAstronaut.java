@@ -4,11 +4,12 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.behaviours.AttackBehaviour;
 
+/**
+ * An class representing a SuspiciousAstronaut
+ */
 public class SuspiciousAstronaut extends Monster{
     private final int HIT_RATE = 100;
-    /**
-     * A class representing the Suspicious Astronaut monster.
-     */
+
     public SuspiciousAstronaut() {
         super("Suspicious Astronaut", 'ඞ', 99);
         this.addCapability(Status.HOSTILE_TO_PLAYER);

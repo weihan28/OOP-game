@@ -8,7 +8,9 @@ import game.items.fruitFactories.FruitFactory;
 import java.util.List;
 import java.util.Random;
 
-
+/**
+ * Class representing the spawn fruit behaviour of grounds.
+ */
 public class SpawnFruitGroundBehaviour implements GroundBehaviour {
     private final Random random = new Random();
     private int spawnChance;
@@ -19,6 +21,11 @@ public class SpawnFruitGroundBehaviour implements GroundBehaviour {
         this.fruitFactory = fruitFactory;
     }
 
+    /**
+     * Spawns a fruit on a surrounding location within a certain spawn chance.
+     * @param ground
+     * @param location
+     */
     @Override
     public void doAction(Ground ground, Location location) {
         if(random.nextInt(100) <= spawnChance){

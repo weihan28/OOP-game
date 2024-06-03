@@ -10,9 +10,16 @@ import game.actors.actions.AttackAction;
 import game.actors.Status;
 
 /**
- * An Action that enables an Actor attacks another Actor.
+ * Class representing the attack behaviour of actors.
  */
 public class AttackBehaviour implements Behaviour {
+
+    /**
+     * Gets the Attack Action when the target is hostile.
+     * @param actor the Actor acting
+     * @param map the GameMap containing the Actor
+     * @return AttackAction to attack the target.
+     */
     @Override
     public Action getAction(Actor actor, GameMap map) {
         for (Exit exit : map.locationOf(actor).getExits()) {

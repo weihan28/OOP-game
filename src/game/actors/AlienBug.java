@@ -29,6 +29,13 @@ public class AlienBug extends Monster {
         return digits;
     }
 
+    /**
+     * Returns the actions that are to be performed by AlienBug to another actor.
+     * @param otherActor the Actor that might be performing attack
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return list of actions to perform
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         if (otherActor.hasCapability(Status.FOLLOWABLE_BY_ALIEN)) {

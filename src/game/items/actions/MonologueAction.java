@@ -11,21 +11,27 @@ public class MonologueAction extends Action {
     private final String speaker;
     private final String monologue;
 
-    /**
-     * Constructor of a monologue action.
-     * @param speaker the speaker of the monologue
-     * @param monologue the monologue that will be spoken.
-     */
     public MonologueAction(String speaker, String monologue) {
         this.speaker = speaker;
         this.monologue = monologue;
     }
 
+    /**
+     *  Allow the entity to monologue
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return string representing the monologue
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
         return String.format("%s: %s", speaker, monologue);
     }
 
+    /**
+     * Describe what action will be performed if this Action is chosen in the menu.
+     * @param actor The actor performing the action.
+     * @return  string representing a potential monologue.
+     */
     @Override
     public String menuDescription(Actor actor) {
         return String.format("%s talks to %s", actor, speaker);

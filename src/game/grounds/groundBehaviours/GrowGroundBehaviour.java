@@ -3,6 +3,9 @@ package game.grounds.groundBehaviours;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 
+/**
+ * Class representing the grow behaviour of grounds.
+ */
 public class GrowGroundBehaviour implements GroundBehaviour {
     private int counter;
     private int tickToGrow;
@@ -13,6 +16,11 @@ public class GrowGroundBehaviour implements GroundBehaviour {
         this.tickToGrow = tickToGrow;
     }
 
+    /**
+     * Grows into the next ground after a certain amount of ticks
+     * @param ground
+     * @param location
+     */
     @Override
     public void doAction(Ground ground, Location location) {
         counter++;

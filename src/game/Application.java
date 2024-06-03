@@ -127,7 +127,7 @@ public class Application {
 
     private static void initParkingLot(Terminal terminal, Moon gameMap) {
         gameMap.at(3,2).setGround(terminal);
-        gameMap.at(3,8).addActor(new HumanoidFigure());
+//        gameMap.at(3,8).addActor(new HumanoidFigure());
     }
 
     private static void initRefactorio(Terminal terminal, Moon gameMap) {

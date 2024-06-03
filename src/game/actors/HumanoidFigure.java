@@ -1,5 +1,8 @@
 package game.actors;
 
+/**
+ * A class representing the HumanoidFigure
+ */
 public class HumanoidFigure extends NPC {
 
     public HumanoidFigure() {
