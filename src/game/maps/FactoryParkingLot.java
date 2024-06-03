@@ -9,6 +9,9 @@ import game.grounds.Wall;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * A class that represents the Factory Parking Lot in the game.
+ */
 public class FactoryParkingLot extends Moon {
     public static List<String> mapString = Arrays.asList(
             ".......",

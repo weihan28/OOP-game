@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import java.util.List;
 
 /**
- * maybe make abstract so ppl dont instantiate a moon.
+ * Abstract class that for different moons.
  */
 public abstract class Moon extends GameMap {
     private static final int DEFAULT_PLAYER_SPAWN_X = 0;
@@ -17,6 +17,11 @@ public abstract class Moon extends GameMap {
         super(groundFactory, mapString);
     }
 
+    /**
+     * Gets the location of where to spawn the player.
+     *
+     * @return The location to spawn the player on the map.
+     */
     public Location getPlayerSpawn(){
         return this.at(DEFAULT_PLAYER_SPAWN_X, DEFAULT_PLAYER_SPAWN_Y);
     }

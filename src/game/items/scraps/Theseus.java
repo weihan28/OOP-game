@@ -7,6 +7,9 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.items.actions.Purchasable;
 import game.maps.TeleportAction;
 
+/**
+ * A class that represents a Theseus in the game.
+ **/
 public class Theseus extends Item implements Purchasable {
 
     private final int cost;
@@ -15,8 +18,6 @@ public class Theseus extends Item implements Purchasable {
         super("Theseus", '^', true);
         cost = 100;
     }
-
-
 
     @Override
     public String purchaseBy(Actor actor) {

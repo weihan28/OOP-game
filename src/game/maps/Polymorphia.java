@@ -10,6 +10,9 @@ import game.grounds.Wall;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * A class that represents Polymorphia in the game.
+ */
 public class Polymorphia extends Moon {
     private static List<String> mapString = Arrays.asList(
             "...~~~~.........~~~...........",

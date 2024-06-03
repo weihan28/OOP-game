@@ -1,7 +1,6 @@
 package game.maps;
 
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
-import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.grounds.Dirt;
 import game.grounds.Floor;
@@ -11,6 +10,9 @@ import game.grounds.Wall;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * A class that represents Refactorio in the game.
+ */
 public class Refactorio extends Moon {
     public static List<String> mapString = Arrays.asList(
             "..........................~~~~",
