@@ -16,6 +16,13 @@ public class LargeFruit extends Fruit implements Sellable {
         super("Large Fruit", 'O', 2);
     }
 
+    /**
+     * Returns the sell logic for selling a LargeFruit
+     * @param actor The actor that is selling the object.
+     * @param map
+     * @param buyer
+     * @return
+     */
     @Override
     public String sellFrom(Actor actor, GameMap map, Actor buyer) {
         actor.removeItemFromInventory(this);
@@ -23,11 +30,21 @@ public class LargeFruit extends Fruit implements Sellable {
         return String.format("Successfully sold %s for %d credits.", this, getSellValue());
     }
 
+    /**
+     * Helper getter method defined by interface to get sellvalue of fruit
+     * @return
+     */
     @Override
     public int getSellValue() {
         return 30;
     }
 
+    /**
+     * Returns the allowable actions for the LargeFruit
+     * @param otherActor the other actor
+     * @param location the location of the other actor
+     * @return
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, Location location){
         ActionList actions = super.allowableActions(otherActor);

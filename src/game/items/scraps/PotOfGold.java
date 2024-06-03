@@ -38,6 +38,13 @@ public class PotOfGold extends Item implements Consumable, Sellable {
         return String.format("gains %d credits. The rest are held as tax by the factory", addBalanceAmount);
     }
 
+    /**
+     * Returns the sell logic for selling a PotOfGold
+     * @param actor The actor that is selling the object.
+     * @param map
+     * @param buyer
+     * @return
+     */
     @Override
     public String sellFrom(Actor actor, GameMap map, Actor buyer) {
         String result;

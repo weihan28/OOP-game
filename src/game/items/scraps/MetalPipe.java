@@ -27,7 +27,6 @@ public class MetalPipe extends WeaponItem implements Sellable {
 
     /**
      * List of allowable actions that the item allows its owner do to other actor.
-     *
      * @see WeaponItem#allowableActions(Actor, Location)
      * @param otherActor the other actor
      * @param location the location of the other actor
@@ -45,6 +44,10 @@ public class MetalPipe extends WeaponItem implements Sellable {
         return actions;
     }
 
+    /**
+     * Getter method to get the value of a sellable item when sold
+     * @return
+     */
     @Override
     public int getSellValue() {
         return 35;

@@ -43,6 +43,13 @@ public class ToiletPaperRoll extends Item implements Purchasable, Sellable {
         return (random.nextInt(100)<=chanceDiscount) ? cost : discountCost;
     }
 
+    /**
+     * Returns the sell logic for selling a ToiletPaperRoll
+     * @param actor The actor that is selling the object.
+     * @param map
+     * @param buyer
+     * @return
+     */
     @Override
     public String sellFrom(Actor actor, GameMap map, Actor buyer) {
         String result;
@@ -63,6 +70,12 @@ public class ToiletPaperRoll extends Item implements Purchasable, Sellable {
         return result;
     }
 
+    /**
+     * AllowableActions method must be overridden to allow the actor to sell the item.
+     * @param otherActor the other actor
+     * @param location the location of the other actor
+     * @return
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, Location location){
         ActionList actions = new ActionList();
@@ -71,6 +84,11 @@ public class ToiletPaperRoll extends Item implements Purchasable, Sellable {
         }
         return actions;
     }
+
+    /**
+     * Helper getter method defined by interface to get sellvalue of bolt
+     * @return
+     */
 
     @Override
     public int getSellValue() {

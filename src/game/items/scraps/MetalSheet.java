@@ -18,6 +18,14 @@ public class MetalSheet extends Item implements Sellable {
         super("Metal sheet", '%', true);
     }
 
+    /**
+     * Returns the sell logic for selling a MetalSheet
+     * In the instance it hits rng, the buyer will ask for a discount
+     * @param actor The actor that is selling the object.
+     * @param map
+     * @param buyer
+     * @return
+     */
     @Override
     public String sellFrom(Actor actor, GameMap map, Actor buyer) {
         int discountChance = 50;
@@ -36,6 +44,12 @@ public class MetalSheet extends Item implements Sellable {
         return String.format("Successfully sold %s for %d credits", this, sellValue);
     }
 
+    /**
+     * Helper getter method defined by interface to get sellvalue of bolt;
+     * dependent on the discount chance (thanks wei for cleaning this up)
+     * @param discountChance
+     * @return
+     */
     private char getDecisionForDiscount(int discountChance) {
         Display display = new Display();
         String askForDiscount =
@@ -45,6 +59,12 @@ public class MetalSheet extends Item implements Sellable {
         return display.readChar();
     }
 
+    /**
+     * AllowableActions method must be overridden to allow the actor to sell the item.
+     * @param otherActor the other actor
+     * @param location the location of the other actor
+     * @return
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, Location location){
         ActionList actions = new ActionList();

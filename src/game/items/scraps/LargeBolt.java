@@ -17,6 +17,13 @@ public class LargeBolt extends Item implements Sellable {
     }
 
 
+    /**
+     * Returns the sell logic for selling a LargeBolt
+     * @param actor The actor that is selling the object.
+     * @param map
+     * @param buyer
+     * @return
+     */
     @Override
     public String sellFrom(Actor actor, GameMap map, Actor buyer) {
         actor.removeItemFromInventory(this);
@@ -24,6 +31,12 @@ public class LargeBolt extends Item implements Sellable {
         return String.format("Successfully sold %s for %d credits.", this, getSellValue());
     }
 
+    /**
+     * AllowableActions method must be overridden to allow the actor to sell the item.
+     * @param otherActor the other actor
+     * @param location the location of the other actor
+     * @return
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, Location location){
         ActionList actions = new ActionList();
@@ -33,6 +46,10 @@ public class LargeBolt extends Item implements Sellable {
         return actions;
     }
 
+    /**
+     * Helper getter method defined by interface to get sellvalue of bolt
+     * @return
+     */
     @Override
     public int getSellValue() {
         return 25;

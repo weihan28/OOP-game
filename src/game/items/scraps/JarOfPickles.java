@@ -69,6 +69,13 @@ public class JarOfPickles extends Item implements Consumable, Sellable {
         return actions;
     }
 
+    /**
+     * Returns the sell logic for selling a JarOfPickles
+     * @param actor The actor that is selling the object.
+     * @param map
+     * @param buyer
+     * @return
+     */
     @Override
     public String sellFrom(Actor actor, GameMap map, Actor buyer) {
         actor.removeItemFromInventory(this);
@@ -83,6 +90,10 @@ public class JarOfPickles extends Item implements Consumable, Sellable {
         }
     }
 
+    /**
+     * Helper getter method defined by interface to get sellvalue of JarOfPickles
+     * @return
+     */
     @Override
     public int getSellValue() {
         return 25;
