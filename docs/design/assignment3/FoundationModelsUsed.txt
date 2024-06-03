@@ -1,0 +1,1 @@
+GPT - creation of sequence 2 diagram; assistance in writing / understanding REQ2 design rationale
