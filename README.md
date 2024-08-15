@@ -27,7 +27,7 @@ To install and run Static Factory, follow these steps:
 
 2. Compile the game(only once is needed):
    ```bash
-    javac -d out -cp "static-factory/src" static-factory/src/game/Application.java
+    javac -d static-factory-compiled -cp "static-factory/src" static-factory/src/game/Application.java
     ```
 
 3. Run the game:
