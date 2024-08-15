@@ -22,7 +22,7 @@ To install and run Static Factory, follow these steps:
 
 1. Clone the repository:
     ```bash
-    git clone [<repository_URL>](https://github.com/weihan28/static-factory.git)
+    git clone https://github.com/weihan28/static-factory.git
     ```
 
 2. Navigate to the project directory:
