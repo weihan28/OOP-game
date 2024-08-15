@@ -2,6 +2,8 @@
 
 Static Factory is a ascii game inspired by "Lethal Company". This project aims to develop a game with using object oriented programming practises with unique characters, items, locations, and concepts.
 
+Project of FIT2099 OOP 2024
+
 ## Table of Contents
 
 - [Features](#features)
