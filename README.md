@@ -25,12 +25,7 @@ To install and run Static Factory, follow these steps:
     git clone https://github.com/weihan28/static-factory.git
     ```
 
-2. Navigate to the project directory:
-    ```bash
-    cd static-factory
-    ```
-
-3. Compile the game(only once is needed):
+2. Compile the game(only once is needed):
    ```bash
     javac -d out -cp "static-factory/src" static-factory/src/game/Application.java
     ```
