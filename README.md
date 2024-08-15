@@ -7,9 +7,6 @@ Static Factory is a ascii game inspired by "Lethal Company". This project aims t
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
 
 ## Features
 
@@ -30,12 +27,12 @@ To install and run Static Factory, follow these steps:
 
 2. Navigate to the project directory:
     ```bash
-    cd static-factory/folder
+    cd static-factory
     ```
 
 3. Compile the game(only once is needed):
    ```bash
-    javac -d out -cp "project/src" project/src/game/Application.java
+    javac -d out -cp "static-factory/src" static-factory/src/game/Application.java
     ```
 
 3. Run the game:
@@ -45,29 +42,13 @@ To install and run Static Factory, follow these steps:
 
 ## Usage
 
-- Start the game by running the main script.
 - Use the in-game instructions to navigate and play.
 - Explore different locations, interact with characters, and use items to progress.
-
-## Contributing
-
-We welcome contributions! Please follow these guidelines:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Commit your changes.
-4. Push your branch and create a Pull Request.
-
-For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
 
-## Contact
-
-For any inquiries or feedback, please reach out to the project maintainers at [your_email@example.com](mailto:your_email@example.com).
-
 ---
 
-Enjoy the game and happy coding!
+Enjoy the game!
