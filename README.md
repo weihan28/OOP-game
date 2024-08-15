@@ -32,7 +32,7 @@ To install and run Static Factory, follow these steps:
 
 3. Run the game:
     ```bash
-    java -cp out game.Application
+    java -cp static-factory-compiled game.Application
     ```
 
 ## Usage
