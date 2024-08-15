@@ -42,10 +42,6 @@ To install and run Static Factory, follow these steps:
 - Use the in-game instructions to navigate and play.
 - Explore different locations, interact with characters, and use items to progress.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
 ---
 
 Enjoy the game!
